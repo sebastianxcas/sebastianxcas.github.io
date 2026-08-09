@@ -8,7 +8,7 @@ import siteConfig from './src/site.config.ts';
 export default defineConfig({
   // Served from a GitHub Pages project site: https://kpab.github.io/astro-haze/
   site: 'https://sebastianxcas.github.io',
-  base: '/astro-haze',
+  
   // MDX is always enabled so `.mdx` files in the content collections render
   // (the blog/projects globs already accept them). Sitemap and Pagefind are
   // gated by their `features` flags in site.config. Pagefind indexes the
