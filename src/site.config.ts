@@ -75,15 +75,15 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Astro Haze',
-  title: 'Astro Haze - Glassmorphism Theme',
-  description: 'A beautiful glassmorphism multi-purpose theme for Astro 7',
-  author: 'Your Name',
-  url: 'https://kpab.github.io/astro-haze',
+  name: 'Sebastian Castellanos Parra',
+  title: 'E-Portafolio | Bases de Datos 1',
+  description: 'E-portafolio academico de Sebastian Castellanos Parra para la asignatura Bases de Datos 1.',
+  author: 'Sebastian Castellanos Parra',
+  url: 'https://sebastianxcas.github.io',
   ogImage: '/og-image.png',
   twitterHandle: '@yourusername',
-  lang: 'en',
-  ogLocale: 'en_US',
+  lang: 'es',
+  ogLocale: 'es_CO',
 
   theme: {
     accentColor: 'hsl(280, 70%, 60%)',
@@ -93,12 +93,11 @@ const siteConfig: SiteConfig = {
 
   nav: {
     main: [
-      { name: 'Home', href: '/' },
-      { name: 'Blog', href: '/blog/' },
-      { name: 'Portfolio', href: '/work/' },
-      { name: 'Landing', href: '/landing/' },
-      { name: 'About', href: '/about/' },
-    ],
+  { name: 'Inicio', href: '/' },
+  { name: 'Blog', href: '/blog/' },
+  { name: 'Evidencias', href: '/work/' },
+  { name: 'Presentación', href: '/about/' },
+  ],
   },
 
   features: {
@@ -111,9 +110,9 @@ const siteConfig: SiteConfig = {
   },
 
   social: {
-    github: 'https://github.com/yourusername',
-    twitter: 'https://twitter.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
+    github: 'https://github.com/sebastianxcas',
+    twitter: 'https://twitter.com/PanaBotas',
+    linkedin: 'https://linkedin.com/in/sebastian-castellanos-parra-694a53428/',
   },
 
   blog: {

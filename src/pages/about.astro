@@ -71,12 +71,13 @@ const stack = [
 ---
 
 <BaseLayout
-  title="About"
-  description={`${siteConfig.name} is a modular Astro 7 theme for publishing stories, projects, and focused landing pages.`}
+  title="Presentación"
+  description="Presentación de Sebastián Castellanos para la asignatura Bases de Datos 1."
 >
   <Header />
 
   <main id="main" tabindex="-1">
+
     <section class="about-hero">
       <Container size="xl">
         <GlassPanel
@@ -86,46 +87,44 @@ const stack = [
           className="about-hero__panel"
         >
           <div class="about-hero__meta">
-            <span>About the system</span>
-            <span>Open source · Astro 7</span>
+            <span>Presentación</span>
+            <span>Bases de Datos 1 · Universidad El Bosque</span>
           </div>
 
           <div class="about-hero__body">
             <div class="about-hero__title">
-              <p>Designed by {siteConfig.author}</p>
-              <h1>A quiet framework for expressive work.</h1>
+              <p>Hola, soy Sebastián</p>
+
+              <h1>También puedes llamarme Sebas.</h1>
             </div>
+
             <div class="about-hero__statement">
               <p>
-                {siteConfig.name} is a multi-purpose theme built around one belief:
-                strong structure should make creative choices easier, not narrower.
+                Soy estudiante de Ingeniería de Sistemas y este es mi
+                e-portafolio para la asignatura Bases de Datos 1.
               </p>
+
               <p>
-                It combines editorial hierarchy, typed content, accessible
-                interaction, and carefully limited glass effects into a
-                foundation meant to be changed.
+                En mi tiempo libre me gusta jugar videojuegos,
+                especialmente Valorant, y escuchar música. No tengo un
+                género musical específico; simplemente disfruto escuchar
+                música que me guste.
               </p>
             </div>
           </div>
 
           <div class="about-hero__footer">
-            <span aria-hidden="true">AH / 07</span>
+            <span aria-hidden="true">SC / 01</span>
+
             <div class="about-hero__actions">
-              {
-                siteConfig.social.github && (
-                  <Button
-                    href={siteConfig.social.github}
-                    external
-                    variant="solid"
-                    size="lg"
-                  >
-                    View on GitHub <span aria-hidden="true">↗</span>
-                  </Button>
-                )
-              }
-              <Button href={withBase('/landing/')} variant="outline" size="lg"
-                >See the live demo</Button
+              <Button
+                href={siteConfig.social.github}
+                external
+                variant="solid"
+                size="lg"
               >
+                Mi GitHub <span aria-hidden="true">↗</span>
+              </Button>
             </div>
           </div>
         </GlassPanel>
@@ -133,117 +132,87 @@ const stack = [
     </section>
 
     <Section
-      eyebrow="One system, three formats"
-      title="Built around what you need to say."
-      subtitle="Start with a complete publishing model, then remove, reorder, and restyle until it belongs to the work."
+      eyebrow="Bases de Datos 1"
+      title="¿Por qué creo que esta materia me ayudará?"
+      subtitle="Una parte importante de mi formación como ingeniero de sistemas."
       align="left"
       container="xl"
     >
-      <div class="format-list">
-        {
-          formats.map((format) => (
-            <GlassCard
-              href={withBase(format.href)}
-              padding="lg"
-              radius="xl"
-              class="format-card"
-            >
-              <div class="format-card__meta">
-                <span>{format.number}</span>
-                <span>{format.label}</span>
-              </div>
-              <h2>{format.title}</h2>
-              <p>{format.description}</p>
-              <span class="format-card__link">
-                Explore format <i aria-hidden="true">↗</i>
-              </span>
-            </GlassCard>
-          ))
-        }
+      <div class="about-hero__statement">
+        <p>
+          Considero que es fundamental para mi vida profesional porque me enseña el lenguaje universal de los negocios: los datos.
+          No solo voy a aprender a usar un motor de base de datos, sino a diseñar estructuras lógicas y eficientes que eviten redundancias y errores.
+        </p>
+
+        <p>
+          Los conocimientos adquiridos en Bases de Datos 1 podrán ayudarme
+          en los proyectos que desarrolle durante mi carrera y posteriormente
+          en mi vida profesional.
+        </p>
       </div>
+    </Section>
+
+    <Section
+      eyebrow="Mi presentación"
+      title="Conoce un poco más sobre mí."
+      subtitle="Video de presentación para Bases de Datos 1."
+      align="left"
+      container="xl"
+    >
+      <GlassPanel
+        variant="solid"
+        padding="lg"
+        radius="xl"
+      >
+        <div style="aspect-ratio: 16 / 9;">
+  <iframe
+    src="https://youtu.be/Srzb67kSNsI?si=Mf6rpHOAvSfz_Ikn"
+    title="Video de presentación de Sebastián Castellanos"
+    style="
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 1rem;
+    "
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
+            <div>
+              <p style="font-size: var(--text-xl);">
+                🎥 Video de presentación
+              </p>
+
+              <p>
+                Aquí irá mi video de presentación de Bases de Datos 1.
+              </p>
+            </div>
+          </div>
+        </div>
+      </GlassPanel>
     </Section>
 
     <section class="principle">
       <Container size="xl">
-        <p class="principle__index">The principle / 04</p>
+        <p class="principle__index">Mi objetivo / 03</p>
+
         <blockquote>
-          Atmosphere should support the content,
-          <span>never compete with it.</span>
+          Este semestre quiero demostrar que...
+          <span>puedo mejorar, aprender y aplicar mis conocimientos.</span>
         </blockquote>
+
         <div class="principle__note">
           <span class="principle__mark" aria-hidden="true">✦</span>
+
           <p>
-            Glass appears only where it clarifies grouping or depth. Everywhere
-            else, type, spacing, and borders do the quieter work.
+            Quiero aprovechar cada actividad, proyecto y evidencia para
+            mejorar mis conocimientos en bases de datos y llevarlos a la
+            práctica.
           </p>
         </div>
       </Container>
     </section>
 
-    <Section
-      id="stack"
-      eyebrow="Under the surface"
-      title="A modern, legible stack."
-      subtitle="The implementation favors platform features and durable conventions over client-side machinery."
-      align="left"
-      container="xl"
-    >
-      <ol class="stack-list">
-        {
-          stack.map((item, index) => (
-            <li>
-              <span class="stack-list__number">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <span class="stack-list__category">{item.category}</span>
-              <strong>{item.name}</strong>
-              <p>{item.detail}</p>
-            </li>
-          ))
-        }
-      </ol>
-    </Section>
-
-    <section class="about-cta">
-      <Container size="xl">
-        <div class="about-cta__copy">
-          <p>Fork the foundation</p>
-          <h2>Make the haze your own.</h2>
-        </div>
-        <div class="about-cta__aside">
-          <p>
-            Use the theme as a starting point for your next publication,
-            portfolio, or campaign—then shape the system around your own voice.
-          </p>
-          <div>
-            {
-              siteConfig.social.github && (
-                <Button
-                  href={siteConfig.social.github}
-                  external
-                  variant="solid"
-                  size="lg"
-                >
-                  Get the source <span aria-hidden="true">↗</span>
-                </Button>
-              )
-            }
-            {
-              siteConfig.social.twitter && (
-                <Button
-                  href={siteConfig.social.twitter}
-                  external
-                  variant="outline"
-                  size="lg"
-                >
-                  Follow updates
-                </Button>
-              )
-            }
-          </div>
-        </div>
-      </Container>
-    </section>
   </main>
 
   <Footer />
