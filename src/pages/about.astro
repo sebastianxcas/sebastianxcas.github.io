@@ -33,17 +33,20 @@ import { withBase } from '@/lib/url';
             <span>Bases de Datos 1 · Universidad El Bosque</span>
           </div>
 
+          <!-- ===== CUERPO CON FOTO + TEXTO ===== -->
           <div class="about-hero__body">
-            <!-- Foto -->
-            <div class="about-photo">
-              <img
-                src="/sebastian.jpg"
-                alt="Sebastián Castellanos"
-              />
+            <!-- Columna 1: Foto -->
+            <div class="about-hero__photo-col">
+              <div class="about-photo">
+                <img
+                  src="/sebastian.jpg"
+                  alt="Sebastián Castellanos"
+                />
+              </div>
             </div>
 
-            <!-- Título y descripción -->
-            <div class="about-hero__content">
+            <!-- Columna 2: Texto -->
+            <div class="about-hero__text-col">
               <span class="about-hero__greeting">HOLA, SOY SEBASTIÁN.</span>
               <h1>También puedes llamarme Sebas.</h1>
               <div class="about-hero__statement">
@@ -154,7 +157,7 @@ import { withBase } from '@/lib/url';
 </BaseLayout>
 
 <style>
-  /* ===== ESTILOS GLOBALES DE LA PÁGINA ===== */
+  /* ===== ESTILOS GLOBALES ===== */
   main {
     overflow: clip;
   }
@@ -189,27 +192,43 @@ import { withBase } from '@/lib/url';
     border-bottom: 1px solid var(--glass-border);
   }
 
-  /* ===== CUERPO PRINCIPAL: FOTO + CONTENIDO ===== */
+  /* ===== CUERPO PRINCIPAL: FOTO IZQUIERDA | TEXTO DERECHA ===== */
   .about-hero__body {
     display: grid;
-    grid-template-columns: minmax(20rem, 1.4fr) minmax(17rem, 0.6fr);
-    align-items: end;
+    grid-template-columns: auto 1fr;
+    align-items: center;
     gap: clamp(3rem, 8vw, 8rem);
     padding-block: clamp(4rem, 10vw, 8rem);
   }
 
+  /* ===== COLUMNA DE LA FOTO ===== */
+  .about-hero__photo-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .about-photo {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     overflow: hidden;
     border-radius: 50%;
     flex-shrink: 0;
+    border: 3px solid var(--glass-border);
   }
 
   .about-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+  }
+
+  /* ===== COLUMNA DEL TEXTO ===== */
+  .about-hero__text-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
   }
 
   .about-hero__greeting {
@@ -223,15 +242,15 @@ import { withBase } from '@/lib/url';
 
   h1 {
     max-width: 11ch;
-    margin: var(--space-lg) 0 0;
-    font-size: clamp(3.5rem, 8.5vw, 8rem);
+    margin: 0;
+    font-size: clamp(3rem, 7vw, 6rem);
     line-height: 0.88;
     letter-spacing: -0.07em;
   }
 
   .about-hero__statement {
     padding-left: var(--space-xl);
-    border-left: 1px solid var(--glass-border);
+    border-left: 2px solid var(--glass-border);
     color: var(--color-text-muted);
     font-size: var(--text-lg);
   }
@@ -240,6 +259,7 @@ import { withBase } from '@/lib/url';
     margin-bottom: 0;
   }
 
+  /* ===== FOOTER ===== */
   .about-hero__footer {
     align-items: flex-end;
     padding-top: var(--space-lg);
@@ -305,11 +325,32 @@ import { withBase } from '@/lib/url';
     .about-hero__body {
       grid-template-columns: 1fr;
       gap: var(--space-2xl);
+      text-align: center;
+    }
+
+    .about-hero__photo-col {
+      justify-content: center;
     }
 
     .about-photo {
-      width: 140px;
-      height: 140px;
+      width: 160px;
+      height: 160px;
+    }
+
+    .about-hero__statement {
+      padding-left: 0;
+      border-left: none;
+      padding-top: var(--space-lg);
+      border-top: 2px solid var(--glass-border);
+    }
+
+    h1 {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .about-hero__greeting {
+      text-align: center;
     }
   }
 
@@ -320,14 +361,9 @@ import { withBase } from '@/lib/url';
       flex-direction: column;
     }
 
-    .about-hero__body {
-      gap: var(--space-2xl);
-    }
-
-    .about-hero__statement {
-      padding: var(--space-xl) 0 0;
-      border-top: 1px solid var(--glass-border);
-      border-left: 0;
+    .about-photo {
+      width: 140px;
+      height: 140px;
     }
 
     .about-hero__actions {

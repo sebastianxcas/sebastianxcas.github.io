@@ -2,153 +2,89 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
-import GlassPanel from '@/components/common/GlassPanel.astro';
-import Button from '@/components/ui/Button.astro';
-import Container from '@/components/ui/Container.astro';
-import GlassCard from '@/components/ui/GlassCard.astro';
-import Section from '@/components/ui/Section.astro';
-import siteConfig from '@/site.config';
-import { withBase } from '@/lib/url';
 ---
 
 <BaseLayout
-  title="Presentación"
-  description="Presentación de Sebastián Castellanos para la asignatura Bases de Datos 1."
+  title="Evidencias"
+  description="Evidencias académicas de la asignatura Bases de Datos 1."
 >
   <Header />
 
   <main id="main" tabindex="-1">
 
-    <!-- ===== SECCIÓN HERO (PRESENTACIÓN PRINCIPAL) ===== -->
-    <section class="about-hero">
-      <Container size="xl">
-        <GlassPanel
-          variant="solid"
-          padding="xl"
-          radius="xl"
-          className="about-hero__panel"
-        >
-          <div class="about-hero__meta">
-            <span>Presentación</span>
-            <span>Bases de Datos 1 · Universidad El Bosque</span>
-          </div>
+    <section class="evidence-hero">
+      <div class="evidence-container">
+        <p class="eyebrow">BASES DE DATOS 1 · E-PORTAFOLIO</p>
 
-          <!-- ===== CUERPO CON FOTO + TEXTO ===== -->
-          <div class="about-hero__body">
-            <!-- Columna 1: Foto -->
-            <div class="about-hero__photo-col">
-              <div class="about-photo">
-                <img
-                  src="/sebastian.jpg"
-                  alt="Sebastián Castellanos"
-                />
-              </div>
-            </div>
+        <h1>Evidencias</h1>
 
-            <!-- Columna 2: Texto -->
-            <div class="about-hero__text-col">
-              <span class="about-hero__greeting">HOLA, SOY SEBASTIÁN.</span>
-              <h1>También puedes llamarme Sebas.</h1>
-              <div class="about-hero__statement">
-                <p>
-                  Soy estudiante de Ingeniería de Sistemas y este es mi
-                  e-portafolio para la asignatura Bases de Datos 1.
-                </p>
-                <p>
-                  En mi tiempo libre me gusta jugar videojuegos,
-                  especialmente Valorant, y escuchar música. No tengo un
-                  género musical específico; simplemente disfruto escuchar
-                  música que me guste.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-hero__footer">
-            <span aria-hidden="true">SC / 01</span>
-            <div class="about-hero__actions">
-              <Button
-                href={siteConfig.social.github}
-                external
-                variant="solid"
-                size="lg"
-              >
-                Mi GitHub <span aria-hidden="true">↗</span>
-              </Button>
-            </div>
-          </div>
-        </GlassPanel>
-      </Container>
-    </section>
-
-    <!-- ===== SECCIÓN: ¿POR QUÉ BD1 ME AYUDARÁ? ===== -->
-    <Section
-      eyebrow="Bases de Datos 1"
-      title="¿Por qué creo que esta materia me ayudará?"
-      subtitle="Una parte importante de mi formación como ingeniero de sistemas."
-      align="left"
-      container="xl"
-    >
-      <div class="about-hero__statement">
-        <p>
-          Considero que es fundamental para mi vida profesional porque me enseña el lenguaje universal de los negocios: los datos.
-          No solo voy a aprender a usar un motor de base de datos, sino a diseñar estructuras lógicas y eficientes que eviten redundancias y errores.
-        </p>
-        <p>
-          Los conocimientos adquiridos en Bases de Datos 1 podrán ayudarme
-          en los proyectos que desarrolle durante mi carrera y posteriormente
-          en mi vida profesional.
+        <p class="intro">
+          En este espacio iré recopilando las actividades, trabajos y
+          proyectos realizados durante el semestre.
         </p>
       </div>
-    </Section>
+    </section>
 
-    <!-- ===== SECCIÓN: VIDEO DE PRESENTACIÓN ===== -->
-    <Section
-      eyebrow="Mi presentación"
-      title="Conoce un poco más sobre mí."
-      subtitle="Video de presentación para Bases de Datos 1."
-      align="left"
-      container="xl"
-    >
-      <GlassPanel
-        variant="solid"
-        padding="lg"
-        radius="xl"
-      >
-        <div style="aspect-ratio: 16 / 9;">
-          <iframe
-            src="https://www.youtube.com/embed/Srzb67kSNsI"
-            title="Video de presentación de Sebastián Castellanos"
-            style="
-              width: 100%;
-              height: 100%;
-              border: 0;
-              border-radius: 1rem;
-            "
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </GlassPanel>
-    </Section>
+    <section class="evidence-section">
+      <div class="evidence-container">
 
-    <!-- ===== SECCIÓN: OBJETIVO ===== -->
-    <section class="principle">
-      <Container size="xl">
-        <p class="principle__index">Mi objetivo / 03</p>
-        <blockquote>
-          Este semestre quiero demostrar que...
-          <span>puedo mejorar, aprender y aplicar mis conocimientos.</span>
-        </blockquote>
-        <div class="principle__note">
-          <span class="principle__mark" aria-hidden="true">✦</span>
-          <p>
-            Quiero aprovechar cada actividad, proyecto y evidencia para
-            mejorar mis conocimientos en bases de datos y llevarlos a la
-            práctica.
-          </p>
+        <div class="evidence-grid">
+
+          <article class="evidence-card">
+            <span class="number">01</span>
+
+            <h2>Modelado</h2>
+
+            <p>
+              Evidencias relacionadas con el modelado de bases de datos,
+              entidades, relaciones y diagramas.
+            </p>
+
+            <span class="status">Próximamente</span>
+          </article>
+
+          <article class="evidence-card">
+            <span class="number">02</span>
+
+            <h2>Normalización</h2>
+
+            <p>
+              Actividades y ejercicios relacionados con la normalización
+              y organización de los datos.
+            </p>
+
+            <span class="status">Próximamente</span>
+          </article>
+
+          <article class="evidence-card">
+            <span class="number">03</span>
+
+            <h2>SQL</h2>
+
+            <p>
+              Consultas, ejercicios y actividades prácticas realizadas
+              utilizando SQL.
+            </p>
+
+            <span class="status">Próximamente</span>
+          </article>
+
+          <article class="evidence-card">
+            <span class="number">04</span>
+
+            <h2>Proyecto</h2>
+
+            <p>
+              Avances, evidencias y entregas relacionadas con el proyecto
+              desarrollado durante el semestre.
+            </p>
+
+            <span class="status">Próximamente</span>
+          </article>
+
         </div>
-      </Container>
+
+      </div>
     </section>
 
   </main>
@@ -157,227 +93,97 @@ import { withBase } from '@/lib/url';
 </BaseLayout>
 
 <style>
-  /* ===== ESTILOS GLOBALES ===== */
-  main {
-    overflow: clip;
+  .evidence-container {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto;
   }
 
-  .about-hero {
-    padding-block: clamp(3rem, 8vw, 7rem);
+  .evidence-hero {
+    padding: 7rem 0 4rem;
   }
 
-  .about-hero__panel {
-    min-height: min(47rem, calc(100vh - 8rem));
-    min-height: min(47rem, calc(100dvh - 8rem));
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .about-hero__meta,
-  .about-hero__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-lg);
-    color: var(--color-text-muted);
+  .eyebrow {
+    margin: 0 0 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
+    opacity: 0.65;
   }
 
-  .about-hero__meta {
-    padding-bottom: var(--space-lg);
-    border-bottom: 1px solid var(--glass-border);
-  }
-
-  /* ===== CUERPO PRINCIPAL: FOTO IZQUIERDA | TEXTO DERECHA ===== */
-  .about-hero__body {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: clamp(3rem, 8vw, 8rem);
-    padding-block: clamp(4rem, 10vw, 8rem);
-  }
-
-  /* ===== COLUMNA DE LA FOTO ===== */
-  .about-hero__photo-col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .about-photo {
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 50%;
-    flex-shrink: 0;
-    border: 3px solid var(--glass-border);
-  }
-
-  .about-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* ===== COLUMNA DEL TEXTO ===== */
-  .about-hero__text-col {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .about-hero__greeting {
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font-size: var(--text-xs);
-    font-weight: 700;
-    display: block;
-  }
-
-  h1 {
-    max-width: 11ch;
+  .evidence-hero h1 {
     margin: 0;
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 0.88;
-    letter-spacing: -0.07em;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
   }
 
-  .about-hero__statement {
-    padding-left: var(--space-xl);
-    border-left: 2px solid var(--glass-border);
-    color: var(--color-text-muted);
-    font-size: var(--text-lg);
+  .intro {
+    max-width: 650px;
+    margin-top: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    opacity: 0.75;
   }
 
-  .about-hero__statement p:last-child {
-    margin-bottom: 0;
+  .evidence-section {
+    padding: 2rem 0 7rem;
   }
 
-  /* ===== FOOTER ===== */
-  .about-hero__footer {
-    align-items: flex-end;
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--glass-border);
-  }
-
-  .about-hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: var(--space-sm);
-  }
-
-  /* ===== SECCIÓN PRINCIPLE (OBJETIVO) ===== */
-  .principle {
-    padding-block: clamp(7rem, 16vw, 14rem);
-  }
-
-  .principle__index {
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-  }
-
-  blockquote {
-    max-width: 15ch;
-    margin: clamp(3rem, 7vw, 6rem) 0;
-    font-size: clamp(3.2rem, 8vw, 7.5rem);
-    font-weight: 750;
-    line-height: 0.88;
-    letter-spacing: -0.07em;
-  }
-
-  blockquote span {
-    display: block;
-    color: var(--color-text-muted);
-    font-weight: 500;
-  }
-
-  .principle__note {
+  .evidence-grid {
     display: grid;
-    grid-template-columns: auto minmax(15rem, 31rem);
-    justify-content: end;
-    align-items: start;
-    gap: var(--space-lg);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
-  .principle__note p {
+  .evidence-card {
+    position: relative;
+    min-height: 280px;
+    padding: 2rem;
+    border: 1px solid var(--glass-border, rgba(128, 128, 128, 0.25));
+    border-radius: 1.25rem;
+    background: var(--glass-background, rgba(128, 128, 128, 0.08));
+    backdrop-filter: blur(12px);
+    transition: transform 0.2s ease;
+  }
+
+  .evidence-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .number {
+    display: block;
+    margin-bottom: 3rem;
+    font-size: 0.85rem;
+    opacity: 0.55;
+  }
+
+  .evidence-card h2 {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+  }
+
+  .evidence-card p {
+    max-width: 500px;
     margin: 0;
-    color: var(--color-text-muted);
-    font-size: var(--text-lg);
+    line-height: 1.6;
+    opacity: 0.7;
   }
 
-  .principle__mark {
-    color: var(--color-accent);
-    font-size: var(--text-2xl);
+  .status {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
   }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    .about-hero__body {
+  @media (max-width: 700px) {
+    .evidence-grid {
       grid-template-columns: 1fr;
-      gap: var(--space-2xl);
-      text-align: center;
     }
 
-    .about-hero__photo-col {
-      justify-content: center;
-    }
-
-    .about-photo {
-      width: 160px;
-      height: 160px;
-    }
-
-    .about-hero__statement {
-      padding-left: 0;
-      border-left: none;
-      padding-top: var(--space-lg);
-      border-top: 2px solid var(--glass-border);
-    }
-
-    h1 {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    .about-hero__greeting {
-      text-align: center;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .about-hero__meta,
-    .about-hero__footer {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-
-    .about-photo {
-      width: 140px;
-      height: 140px;
-    }
-
-    .about-hero__actions {
-      justify-content: flex-start;
-    }
-
-    .principle__note {
-      grid-template-columns: auto 1fr;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .format-card:nth-child(2) {
-      transform: none;
+    .evidence-hero {
+      padding-top: 4rem;
     }
   }
 </style>
