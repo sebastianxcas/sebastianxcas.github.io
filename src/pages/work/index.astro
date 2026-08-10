@@ -1,37 +1,189 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
-import WorkArchive from '@/components/portfolio/WorkArchive.astro';
-import siteConfig from '@/site.config';
-
-const allProjects = (await getCollection('projects')).sort((a, b) => {
-  if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
-  return b.data.year - a.data.year;
-});
-const perPage = Math.max(1, Math.floor(siteConfig.portfolio.projectsPerPage));
-const totalPages = Math.max(1, Math.ceil(allProjects.length / perPage));
-const projects = allProjects.slice(0, perPage);
 ---
 
 <BaseLayout
-  title="Work"
-  description="Selected product, brand, and digital experience work from Astro Haze."
+  title="Evidencias"
+  description="Evidencias académicas de la asignatura Bases de Datos 1."
 >
   <Header />
 
   <main id="main" tabindex="-1">
-    <WorkArchive
-      projects={projects}
-      totalProjects={allProjects.length}
-      currentPage={1}
-      totalPages={totalPages}
-      perPage={perPage}
-      showTechStack={siteConfig.portfolio.showTechStack}
-      showYear={siteConfig.portfolio.showYear}
-    />
+
+    <section class="evidence-hero">
+      <div class="evidence-container">
+        <p class="eyebrow">BASES DE DATOS 1 · E-PORTAFOLIO</p>
+
+        <h1>Evidencias</h1>
+
+        <p class="intro">
+          En este espacio iré recopilando las actividades, trabajos y
+          proyectos realizados durante el semestre.
+        </p>
+      </div>
+    </section>
+
+    <section class="evidence-section">
+      <div class="evidence-container">
+
+        <div class="evidence-grid">
+
+          <article class="evidence-card">
+            <span class="number">01</span>
+
+            <h2>Modelado</h2>
+
+            <p>
+              Evidencias relacionadas con el modelado de bases de datos,
+              entidades, relaciones y diagramas.
+            </p>
+
+            <span class="status">Próximamente</span>
+          </article>
+
+          <article class="evidence-card">
+            <span class="number">02</span>
+
+            <h2>Normalización</h2>
+
+            <p>
+              Actividades y ejercicios relacionados con la normalización
+              y organización de los datos.
+            </p>
+
+            <span class="status">Próximamente</span>
+          </article>
+
+          <article class="evidence-card">
+            <span class="number">03</span>
+
+            <h2>SQL</h2>
+
+            <p>
+              Consultas, ejercicios y actividades prácticas realizadas
+              utilizando SQL.
+            </p>
+
+            <span class="status">Próximamente</span>
+          </article>
+
+          <article class="evidence-card">
+            <span class="number">04</span>
+
+            <h2>Proyecto</h2>
+
+            <p>
+              Avances, evidencias y entregas relacionadas con el proyecto
+              desarrollado durante el semestre.
+            </p>
+
+            <span class="status">Próximamente</span>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <Footer />
 </BaseLayout>
+
+<style>
+  .evidence-container {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .evidence-hero {
+    padding: 7rem 0 4rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  .evidence-hero h1 {
+    margin: 0;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
+  }
+
+  .intro {
+    max-width: 650px;
+    margin-top: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    opacity: 0.75;
+  }
+
+  .evidence-section {
+    padding: 2rem 0 7rem;
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .evidence-card {
+    position: relative;
+    min-height: 280px;
+    padding: 2rem;
+    border: 1px solid var(--glass-border, rgba(128, 128, 128, 0.25));
+    border-radius: 1.25rem;
+    background: var(--glass-background, rgba(128, 128, 128, 0.08));
+    backdrop-filter: blur(12px);
+    transition: transform 0.2s ease;
+  }
+
+  .evidence-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .number {
+    display: block;
+    margin-bottom: 3rem;
+    font-size: 0.85rem;
+    opacity: 0.55;
+  }
+
+  .evidence-card h2 {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+  }
+
+  .evidence-card p {
+    max-width: 500px;
+    margin: 0;
+    line-height: 1.6;
+    opacity: 0.7;
+  }
+
+  .status {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 700px) {
+    .evidence-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .evidence-hero {
+      padding-top: 4rem;
+    }
+  }
+</style>
