@@ -132,6 +132,30 @@ import { withBase } from '@/lib/url';
       </GlassPanel>
     </Section>
 
+    <!-- ===== SECCIÓN: MER (MODELO ENTIDAD-RELACIÓN) ===== -->
+<Section
+  eyebrow="Bases de Datos 1"
+  title="Modelo Entidad-Relación"
+  subtitle="Ejercicio realizado en clase"
+  align="left"
+  container="xl"
+>
+  <GlassPanel
+    variant="solid"
+    padding="lg"
+    radius="xl"
+  >
+    <!-- Contenedor con fondo blanco para la imagen -->
+    <div class="mer-container">
+      <img
+        src="/MER ejercicio en clase.png"
+        alt="Modelo Entidad-Relación - Ejercicio en clase"
+        class="mer-image"
+      />
+    </div>
+  </GlassPanel>
+</Section>
+
     <!-- ===== SECCIÓN: OBJETIVO ===== -->
     <section class="principle">
       <Container size="xl">
@@ -380,4 +404,22 @@ import { withBase } from '@/lib/url';
       transform: none;
     }
   }
+
+  /* ===== SECCIÓN MER ===== */
+.mer-container {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mer-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
 </style>
