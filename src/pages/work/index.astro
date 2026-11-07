@@ -2,188 +2,295 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
+const sections = [
+  {
+    id: 'modelado',
+    number: '01',
+    title: 'Modelado',
+    context:
+      'El diseño comienza identificando entidades, atributos y relaciones. Estos archivos reúnen diagramas y un taller sobre cómo llevar un MER a tablas.',
+    learning:
+      'Al pasar del modelo conceptual al relacional, las claves y las cardinalidades permiten conservar el significado de los datos.',
+    files: [
+      [
+        'Diagrama MER de biblioteca',
+        'modelo-biblioteca.drawio',
+        'Diagrama editable',
+      ],
+      [
+        'Diagrama MER de CineAndes',
+        'modelo-cineandes.drawio',
+        'Diagrama editable',
+      ],
+      ['MER de un ejercicio en clase', 'mer-clase.png', 'Imagen'],
+      [
+        'Taller 1: reglas de transformación',
+        'taller-transformacion.docx',
+        'Trabajo en grupo',
+      ],
+      [
+        'Solución guiada del taller',
+        'solucion-guiada.pdf',
+        'Material de apoyo',
+      ],
+      ['Parcial: enunciado · página 1', 'parcial-1.png', 'Enunciado'],
+      ['Parcial: enunciado · página 2', 'parcial-2.png', 'Enunciado'],
+      ['Parcial: enunciado · página 3', 'parcial-3.png', 'Enunciado'],
+      ['Parcial: enunciado · página 4', 'parcial-4.png', 'Enunciado'],
+      ['Quiz: enunciado · página 1', 'quiz-1.png', 'Enunciado'],
+      ['Quiz: enunciado · página 2', 'quiz-2.png', 'Enunciado'],
+      ['Modelo entidad–relación', 'modelo-er.pptx', 'Diapositivas de clase'],
+      ['Modelo relacional', 'modelo-relacional.pptx', 'Diapositivas de clase'],
+      [
+        'Transformación del MER al MR',
+        'transformacion-mer-mr.pptx',
+        'Diapositivas de clase',
+      ],
+      ['Relaciones ISA', 'relaciones-isa.pptx', 'Diapositivas de clase'],
+    ],
+  },
+  {
+    id: 'normalizacion',
+    number: '02',
+    title: 'Normalización',
+    context:
+      'En el taller se analizaron los esquemas de hospitalización y de pedidos, con sus dependencias funcionales y descomposiciones.',
+    learning:
+      'Identificar dependencias parciales y transitivas ayuda a reducir redundancias y anomalías de actualización, inserción y eliminación.',
+    files: [
+      [
+        'Normalización paso a paso',
+        'normalizacion-paso-a-paso.xlsx',
+        'Trabajo en grupo',
+      ],
+      [
+        'Preguntas del grupo',
+        'preguntas-normalizacion.docx',
+        'Trabajo en grupo',
+      ],
+      [
+        'Resultados de normalización',
+        'resultados-normalizacion.xlsx',
+        'Ejercicios',
+      ],
+      ['Normalización', 'normalizacion.pptx', 'Diapositivas de clase'],
+    ],
+  },
+  {
+    id: 'sql',
+    number: '03',
+    title: 'SQL',
+    context:
+      'El material de clase presenta el lenguaje de consulta desde SELECT hasta agrupaciones y joins.',
+    learning:
+      'Las consultas permiten seleccionar, filtrar, ordenar, agrupar y combinar información de distintas tablas.',
+    files: [
+      [
+        'Ruta de aprendizaje de SQL',
+        'sql-roadmap.pptx',
+        'Diapositivas de clase',
+      ],
+      ['1. Introducción', 'sql-1-introduccion.pptx', 'Diapositivas de clase'],
+      ['2. SELECT', 'sql-2-select.pptx', 'Diapositivas de clase'],
+      [
+        '3. Filtros y ordenamiento',
+        'sql-3-filtros.pptx',
+        'Diapositivas de clase',
+      ],
+      [
+        '4. Funciones de una fila',
+        'sql-4-funciones.pptx',
+        'Diapositivas de clase',
+      ],
+      [
+        '5. Funciones de conversión',
+        'sql-5-conversion.pptx',
+        'Diapositivas de clase',
+      ],
+      [
+        '6. Funciones de grupo',
+        'sql-6-agrupacion.pptx',
+        'Diapositivas de clase',
+      ],
+      ['7. Joins', 'sql-7-joins.pptx', 'Diapositivas de clase'],
+    ],
+  },
+  {
+    id: 'proyecto',
+    number: '04',
+    title: 'Proyecto',
+    context:
+      'Los modelos de biblioteca y CineAndes permiten explorar cómo representar reglas y relaciones en casos concretos.',
+    learning:
+      'Los diagramas sirven para revisar entidades, identificadores y relaciones antes de implementar una base de datos.',
+    files: [
+      ['Modelo de biblioteca', 'modelo-biblioteca.drawio', 'Diagrama editable'],
+      ['Modelo de CineAndes', 'modelo-cineandes.drawio', 'Diagrama editable'],
+    ],
+  },
+];
 ---
 
 <BaseLayout
   title="Evidencias"
-  description="Evidencias académicas de la asignatura Bases de Datos 1."
+  description="Trabajos, diagramas y materiales de Bases de Datos 1."
+  ><Header /><main id="main" tabindex="-1" class="wrap">
+    <header class="intro">
+      <p class="eyebrow">BASES DE DATOS 1 · E-PORTAFOLIO</p><h1>
+        Evidencias
+      </h1><p>
+        Actividades, diagramas y materiales organizados por tema. Cada sección
+        reúne su contexto y una idea principal de aprendizaje.
+      </p><nav class="shortcuts" aria-label="Categorías de evidencias">
+        {sections.map((s) => <a href={'#' + s.id}>{s.title} ↓</a>)}
+      </nav>
+    </header>
+    {
+      sections.map((s) => (
+        <section class="category" id={s.id}>
+          <>
+            <div class="section-heading">
+              <>
+                <span class="number">{s.number} /</span>
+                <div>
+                  <>
+                    <h2>{s.title}</h2>
+                    <p>{s.context}</p>
+                    <p class="learning">
+                      <strong>Aprendizaje:</strong> {s.learning}
+                    </p>
+                  </>
+                </div>
+              </>
+            </div>
+            <div class="files">
+              {s.files.map((f) => (
+                <a class="file" href={'/archivos/' + f[1]}>
+                  <span>
+                    <strong>{f[0]}</strong>
+                    <small>{f[2]}</small>
+                  </span>
+                  <b aria-hidden="true">↗</b>
+                </a>
+              ))}
+            </div>
+          </>
+        </section>
+      ))
+    }
+    <p class="hint">
+      Los archivos .drawio se pueden abrir y editar con diagrams.net. Las
+      fotografías del parcial y del quiz corresponden a los enunciados.
+    </p>
+  </main><Footer /></BaseLayout
 >
-  <Header />
-
-  <main id="main" tabindex="-1">
-
-    <section class="evidence-hero">
-      <div class="evidence-container">
-        <p class="eyebrow">BASES DE DATOS 1 · E-PORTAFOLIO</p>
-
-        <h1>Evidencias</h1>
-
-        <p class="intro">
-          En este espacio iré recopilando las actividades, trabajos y
-          proyectos realizados durante el semestre.
-        </p>
-      </div>
-    </section>
-
-    <section class="evidence-section">
-      <div class="evidence-container">
-
-        <div class="evidence-grid">
-
-          <article class="evidence-card">
-            <span class="number">01</span>
-
-            <h2>Modelado</h2>
-
-            <p>
-              Evidencias relacionadas con el modelado de bases de datos,
-              entidades, relaciones y diagramas.
-            </p>
-
-            <span class="status">Próximamente</span>
-          </article>
-
-          <article class="evidence-card">
-            <span class="number">02</span>
-
-            <h2>Normalización</h2>
-
-            <p>
-              Actividades y ejercicios relacionados con la normalización
-              y organización de los datos.
-            </p>
-
-            <span class="status">Próximamente</span>
-          </article>
-
-          <article class="evidence-card">
-            <span class="number">03</span>
-
-            <h2>SQL</h2>
-
-            <p>
-              Consultas, ejercicios y actividades prácticas realizadas
-              utilizando SQL.
-            </p>
-
-            <span class="status">Próximamente</span>
-          </article>
-
-          <article class="evidence-card">
-            <span class="number">04</span>
-
-            <h2>Proyecto</h2>
-
-            <p>
-              Avances, evidencias y entregas relacionadas con el proyecto
-              desarrollado durante el semestre.
-            </p>
-
-            <span class="status">Próximamente</span>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <Footer />
-</BaseLayout>
-
 <style>
-  .evidence-container {
-    width: min(1200px, calc(100% - 2rem));
-    margin: 0 auto;
+  .wrap {
+    width: min(1100px, calc(100% - 2.5rem));
+    margin: auto;
   }
-
-  .evidence-hero {
-    padding: 7rem 0 4rem;
-  }
-
-  .eyebrow {
-    margin: 0 0 1rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.65;
-  }
-
-  .evidence-hero h1 {
-    margin: 0;
-    font-size: clamp(3rem, 8vw, 6rem);
-    line-height: 0.95;
-  }
-
   .intro {
-    max-width: 650px;
-    margin-top: 2rem;
-    font-size: 1.15rem;
+    padding: 6rem 0 4rem;
+    max-width: 850px;
+  }
+  .eyebrow,
+  .number {
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+  }
+  .intro h1 {
+    font-size: clamp(4rem, 8vw, 6.5rem);
+    letter-spacing: -0.06em;
+    line-height: 1;
+    margin: 1.5rem 0;
+  }
+  .intro > p:not(.eyebrow) {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
     line-height: 1.7;
-    opacity: 0.75;
+    max-width: 720px;
   }
-
-  .evidence-section {
-    padding: 2rem 0 7rem;
+  .shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
   }
-
-  .evidence-grid {
+  .shortcuts a {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    text-decoration: none;
+  }
+  .category {
+    scroll-margin-top: 6rem;
+    padding: 4rem 0;
+    border-top: 1px solid var(--glass-border);
+  }
+  .section-heading {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .section-heading h2 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    letter-spacing: -0.04em;
+    margin: 0 0 1rem;
+  }
+  .section-heading p {
+    max-width: 740px;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+  .section-heading .learning {
+    color: var(--color-text);
+  }
+  .files {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: 0.75rem;
   }
-
-  .evidence-card {
-    position: relative;
-    min-height: 280px;
-    padding: 2rem;
-    border: 1px solid var(--glass-border, rgba(128, 128, 128, 0.25));
-    border-radius: 1.25rem;
-    background: var(--glass-background, rgba(128, 128, 128, 0.08));
-    backdrop-filter: blur(12px);
-    transition: transform 0.2s ease;
+  .file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.15rem 1.3rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    background: var(--glass-background, rgba(128, 128, 128, 0.06));
+    text-decoration: none;
   }
-
-  .evidence-card:hover {
-    transform: translateY(-4px);
+  .file:hover {
+    border-color: var(--color-accent);
   }
-
-  .number {
+  .file strong,
+  .file small {
     display: block;
-    margin-bottom: 3rem;
-    font-size: 0.85rem;
-    opacity: 0.55;
   }
-
-  .evidence-card h2 {
-    margin: 0 0 1rem;
-    font-size: 2rem;
+  .file small {
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
   }
-
-  .evidence-card p {
-    max-width: 500px;
-    margin: 0;
-    line-height: 1.6;
-    opacity: 0.7;
+  .file b {
+    color: var(--color-accent);
   }
-
-  .status {
-    display: inline-block;
-    margin-top: 2rem;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    opacity: 0.5;
+  .hint {
+    color: var(--color-text-muted);
+    padding-bottom: 5rem;
   }
-
   @media (max-width: 700px) {
-    .evidence-grid {
+    .intro {
+      padding-top: 4rem;
+    }
+    .section-heading {
       grid-template-columns: 1fr;
     }
-
-    .evidence-hero {
-      padding-top: 4rem;
+    .files {
+      grid-template-columns: 1fr;
     }
   }
 </style>

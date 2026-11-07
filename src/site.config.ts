@@ -77,7 +77,8 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
   name: 'Sebastian Castellanos Parra',
   title: 'E-Portafolio | Bases de Datos 1',
-  description: 'E-portafolio academico de Sebastian Castellanos Parra para la asignatura Bases de Datos 1.',
+  description:
+    'E-portafolio académico de Sebastián Castellanos Parra para la asignatura Bases de Datos 1.',
   author: 'Sebastian Castellanos Parra',
   url: 'https://sebastianxcas.github.io',
   ogImage: '/og-image.png',
@@ -93,11 +94,11 @@ const siteConfig: SiteConfig = {
 
   nav: {
     main: [
-  { name: 'Inicio', href: '/' },
-  { name: 'Blog', href: '/blog/' },
-  { name: 'Evidencias', href: '/work/' },
-  { name: 'Presentación', href: '/about/' },
-  ],
+      { name: 'Inicio', href: '/' },
+      { name: 'Blog', href: '/blog/' },
+      { name: 'Evidencias', href: '/work/' },
+      { name: 'Presentación', href: '/about/' },
+    ],
   },
 
   features: {

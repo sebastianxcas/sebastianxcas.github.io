@@ -3,7 +3,7 @@
 // timezone would shift the displayed date by a day west of UTC, so timeZone
 // is pinned to UTC here rather than left to the environment default.
 export function formatDate(date: Date): string {
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString('es-CO', {
     timeZone: 'UTC',
     year: 'numeric',
     month: 'long',

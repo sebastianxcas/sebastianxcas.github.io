@@ -1,4 +1,5 @@
 ---
+draft: true
 title: 'Getting Started with Astro Haze'
 description: 'Learn how to quickly set up and customize the Astro Haze glassmorphism theme for your next project.'
 pubDate: 2024-01-15

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: 'Design Principles Behind Astro Haze'
 description: 'Explore the design philosophy and principles that make Astro Haze a unique glassmorphism theme.'
 pubDate: 2024-01-20
