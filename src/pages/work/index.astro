@@ -76,18 +76,28 @@ const sqlResources = [
   <Header />
   <main id="main" tabindex="-1" class="portfolio">
     <header class="intro">
-      <p class="kicker">BASES DE DATOS 1 · E-PORTAFOLIO</p>
-      <h1>El trabajo <em>detrás del aprendizaje.</em></h1>
-      <p class="intro-copy">
-        Un recorrido por los ejercicios, modelos y apuntes del semestre: qué se
-        trabajó, cómo se ve y qué deja cada actividad.
-      </p>
-      <nav class="shortcuts" aria-label="Categorías de evidencias">
-        <a href="#modelado">01 Modelado ↓</a><a href="#normalizacion"
-          >02 Normalización ↓</a
-        ><a href="#sql">03 SQL ↓</a><a href="#proyecto">04 Proyecto ↓</a>
+      <div class="intro-main">
+        <p class="kicker">BASES DE DATOS 1 · EVIDENCIAS</p><h1>
+          El trabajo detrás <em>del aprendizaje.</em>
+        </h1><p class="intro-copy">
+          Modelos, talleres y proyectos que muestran cómo las ideas del curso
+          toman forma en la práctica.
+        </p><a class="intro-start" href="#modelado">Empezar el recorrido ↓</a>
+      </div><nav class="evidence-index" aria-label="Categorías de evidencias">
+        <p>EN ESTE RECORRIDO</p><a href="#modelado"
+          ><span>01</span><strong>Modelado</strong><b>↗</b></a
+        ><a href="#normalizacion"
+          ><span>02</span><strong>Normalización</strong><b>↗</b></a
+        ><a href="#sql"><span>03</span><strong>SQL</strong><b>↗</b></a><a
+          href="#proyecto"
+          ><span>04</span><strong>Proyecto final y parcial</strong><b>↗</b></a>
       </nav>
     </header>
+    <div class="evidence-ribbon">
+      <span>DISEÑAR</span><i>✦</i><span>TRANSFORMAR</span><i>✦</i><span
+        >CONSULTAR</span
+      ><i>✦</i><span>APLICAR</span>
+    </div>
 
     <section class="section" id="modelado">
       <div class="section-header">
@@ -98,7 +108,7 @@ const sqlResources = [
           </p>
         </div>
       </div>
-      <article class="case">
+      <article class="case case--class">
         <div class="case-heading">
           <div>
             <p class="label">EJERCICIO EN CLASE · MODELO ENTIDAD–RELACIÓN</p><h3
@@ -186,7 +196,7 @@ const sqlResources = [
           >
         </div>
       </article>
-      <article class="case">
+      <article class="case case--workshop">
         <div class="case-heading">
           <div>
             <p class="label">TALLER EN GRUPO · TERMINAL PORTUARIA</p><h3>
@@ -302,7 +312,7 @@ const sqlResources = [
           </p>
         </div>
       </div>
-      <article class="case">
+      <article class="case case--normalization">
         <div class="case-heading">
           <div>
             <p class="label">TALLER EN GRUPO · DEPENDENCIAS FUNCIONALES</p><h3>
@@ -577,7 +587,7 @@ const sqlResources = [
           ><a href="/blog/sigevet/">Leer sobre el proyecto →</a>
         </div>
       </article>
-      <article class="case" id="cineandes">
+      <article class="case case--exam" id="cineandes">
         <div class="case-heading">
           <div>
             <p class="label">
@@ -1119,6 +1129,174 @@ const sqlResources = [
     .project-tags {
       justify-content: flex-start;
       margin-top: 1rem;
+    }
+  }
+
+  .intro {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: end;
+    max-width: none;
+    padding: clamp(5rem, 10vw, 9rem) 0 5rem;
+  }
+  .intro h1 {
+    font-size: clamp(3.8rem, 7.2vw, 6.8rem);
+    max-width: 800px;
+  }
+  .intro-start {
+    display: inline-block;
+    margin-top: 1.5rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    padding: 0.8rem 1.2rem;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .evidence-index {
+    border-top: 1px solid var(--glass-border);
+  }
+  .evidence-index > p {
+    font-size: 0.65rem;
+    letter-spacing: 0.13em;
+    font-weight: 800;
+    color: var(--color-text-muted);
+  }
+  .evidence-index a {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    text-decoration: none;
+    align-items: center;
+  }
+  .evidence-index a span,
+  .evidence-index a b {
+    color: var(--color-accent-text);
+    font-size: 0.8rem;
+  }
+  .evidence-index a:hover strong {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+  }
+  .evidence-ribbon {
+    display: flex;
+    gap: 1.4rem;
+    overflow: auto;
+    white-space: nowrap;
+    border-block: 1px solid var(--glass-border);
+    padding: 1rem 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+    font-weight: 800;
+  }
+  .evidence-ribbon i {
+    font-style: normal;
+    color: var(--color-accent-text);
+  }
+  .section {
+    padding: 6rem 0;
+  }
+  .section-header {
+    grid-template-columns: 160px 1fr;
+    align-items: start;
+  }
+  .section-header > span {
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    padding-top: 0.5rem;
+  }
+  .section-header h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+  }
+  .section-header p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .case {
+    padding: clamp(1.4rem, 4vw, 3.5rem);
+    margin-bottom: 1.3rem;
+  }
+  .case-heading h3 {
+    font-size: clamp(2rem, 3.8vw, 3.1rem);
+  }
+  .case-copy p {
+    line-height: 1.75;
+  }
+  .case-copy strong {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--color-accent-text);
+    margin-bottom: 0.6rem;
+  }
+  .case .visual {
+    margin-top: 0.5rem;
+  }
+  .case .visual figcaption {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+  .case--class {
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, #35a69a 9%, var(--color-surface)),
+      var(--color-surface)
+    );
+  }
+  .case--workshop {
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, #b75a8f 10%, var(--color-surface)),
+      var(--color-surface)
+    );
+  }
+  .case--normalization {
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, #657ac7 10%, var(--color-surface)),
+      var(--color-surface)
+    );
+  }
+  .case--exam {
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, #b87a41 9%, var(--color-surface)),
+      var(--color-surface)
+    );
+  }
+  .support,
+  .inline-details {
+    background: var(--glass-background, rgba(128, 128, 128, 0.045));
+    padding: 1.5rem;
+  }
+  .support > summary,
+  .inline-details > summary {
+    font-size: 1rem;
+  }
+  .resource {
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
+  }
+  .links a {
+    color: var(--color-accent-text);
+  }
+  @media (max-width: 800px) {
+    .intro {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-top: 4rem;
+    }
+    .section-header {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    .section {
+      padding: 4rem 0;
     }
   }
 </style>

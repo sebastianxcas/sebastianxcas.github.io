@@ -2,437 +2,514 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
-import GlassPanel from '@/components/common/GlassPanel.astro';
-import Button from '@/components/ui/Button.astro';
-import Container from '@/components/ui/Container.astro';
-import Section from '@/components/ui/Section.astro';
 import siteConfig from '@/site.config';
 ---
 
 <BaseLayout
   title="Presentación"
-  description="Presentación de Sebastián Castellanos para la asignatura Bases de Datos 1."
->
-  <Header />
-
-  <main id="main" tabindex="-1">
-    <!-- ===== SECCIÓN HERO (PRESENTACIÓN PRINCIPAL) ===== -->
-    <section class="about-hero">
-      <Container size="xl">
-        <GlassPanel
-          variant="solid"
-          padding="xl"
-          radius="xl"
-          className="about-hero__panel"
-        >
-          <div class="about-hero__meta">
-            <span>Presentación</span>
-            <span>Bases de Datos 1 · Universidad El Bosque</span>
-          </div>
-
-          <!-- ===== CUERPO CON FOTO + TEXTO ===== -->
-          <div class="about-hero__body">
-            <!-- Columna 1: Foto -->
-            <div class="about-hero__photo-col">
-              <div class="about-photo-wrap">
-                <div class="about-photo">
-                  <img src="/sebastian.jpeg" alt="Sebastián Castellanos" />
-                </div><span class="photo-badge">SC <b>✦</b> BD1</span>
-              </div>
-            </div>
-
-            <!-- Columna 2: Texto -->
-            <div class="about-hero__text-col">
-              <span class="about-hero__greeting">HOLA, SOY SEBASTIÁN.</span>
-              <h1>También puedes llamarme Sebas.</h1>
-              <div class="about-hero__statement">
-                <p>
-                  Soy estudiante de Ingeniería de Sistemas y este es mi
-                  e-portafolio para la asignatura Bases de Datos 1.
-                </p>
-                <p>
-                  En mi tiempo libre me gusta jugar videojuegos, especialmente
-                  Valorant, y escuchar música. No tengo un género musical
-                  específico; simplemente disfruto escuchar música que me guste.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-hero__footer">
-            <span aria-hidden="true">SC / 01</span>
-            <div class="about-hero__actions">
-              <Button
-                href={siteConfig.social.github}
-                external
-                variant="solid"
-                size="lg"
-              >
-                Mi GitHub <span aria-hidden="true">↗</span>
-              </Button>
-            </div>
-          </div>
-        </GlassPanel>
-      </Container>
-    </section>
-
-    <!-- ===== SECCIÓN: ¿POR QUÉ BD1 ME AYUDARÁ? ===== -->
-    <Section
-      eyebrow="Bases de Datos 1"
-      title="¿Por qué creo que esta materia me ayudará?"
-      subtitle="Una parte importante de mi formación como ingeniero de sistemas."
-      align="left"
-      container="xl"
-    >
-      <div class="about-hero__statement">
-        <p>
-          Considero que es fundamental para mi vida profesional porque me enseña
-          el lenguaje universal de los negocios: los datos. No solo voy a
-          aprender a usar un motor de base de datos, sino a diseñar estructuras
-          lógicas y eficientes que eviten redundancias y errores.
-        </p>
-        <p>
-          Los conocimientos adquiridos en Bases de Datos 1 podrán ayudarme en
-          los proyectos que desarrolle durante mi carrera y posteriormente en mi
-          vida profesional.
-        </p>
+  description="Conoce a Sebastián Castellanos y su portafolio de Bases de Datos 1."
+  ><Header />
+  <main id="main" tabindex="-1" class="about">
+    <section class="intro">
+      <div class="intro-copy">
+        <p class="eyebrow">PRESENTACIÓN · BASES DE DATOS 1</p><h1>
+          Hola, soy <span>Sebas.</span>
+        </h1><p class="lead">
+          Soy Sebastián Castellanos Parra, estudiante de Ingeniería de Sistemas
+          en la Universidad El Bosque. Este es el espacio donde reúno mi
+          recorrido por Bases de Datos 1.
+        </p><div class="intro-actions">
+          <a class="primary" href="#video">Ver mi presentación ↓</a><a
+            href="/work/">Explorar evidencias ↗</a>
+        </div><div class="intro-meta">
+          <span>INGENIERÍA DE SISTEMAS</span><span>UNIVERSIDAD EL BOSQUE</span>
+        </div>
       </div>
-    </Section>
-
-    <!-- ===== SECCIÓN: VIDEO DE PRESENTACIÓN ===== -->
-    <Section
-      eyebrow="Mi presentación"
-      title="Conoce un poco más sobre mí."
-      subtitle="Video de presentación para Bases de Datos 1."
-      align="left"
-      container="xl"
-    >
-      <GlassPanel variant="solid" padding="lg" radius="xl">
-        <div style="aspect-ratio: 16 / 9;">
+      <div class="portrait-card">
+        <div class="portrait-top">
+          <span>UN POCO SOBRE MÍ</span><span>01 / PRESENTACIÓN</span>
+        </div><div class="portrait-frame">
+          <img src="/sebastian.jpeg" alt="Sebastián Castellanos" /><div
+            class="portrait-label"
+          >
+            <span>SEBASTIÁN CASTELLANOS</span><strong
+              >Aprender, construir<br />y seguir mejorando.</strong>
+          </div>
+        </div><div class="portrait-bottom">
+          <span>ESTUDIANTE · INGENIERÍA DE SISTEMAS</span><b>✦</b>
+        </div>
+      </div>
+    </section>
+    <div class="divider-line">
+      <span>CONOCER</span><i>✦</i><span>APRENDER</span><i>✦</i><span
+        >COMPARTIR</span
+      ><i>✦</i><span>CREAR</span>
+    </div>
+    <section class="story">
+      <div class="story-label"><span>01</span><small>SOBRE MÍ</small></div><div
+        class="story-copy"
+      >
+        <p class="eyebrow">FUERA DE LAS CLASES</p><h2>
+          Un poco más <span>de mí.</span>
+        </h2><p>
+          En mi tiempo libre me gusta jugar videojuegos, especialmente Valorant,
+          y escuchar música. No tengo un género musical específico: disfruto
+          descubrir y escuchar lo que me gusta.
+        </p><p>
+          En la carrera me interesa aprender a analizar problemas y encontrar
+          maneras de organizar la información para construir soluciones.
+        </p>
+      </div><div class="interests">
+        <div>
+          <span>01 / INTERESES</span><strong>Videojuegos</strong><small
+            >Valorant y tiempo para jugar</small>
+        </div><div>
+          <span>02 / INTERESES</span><strong>Música</strong><small
+            >Sin un solo género favorito</small>
+        </div><div>
+          <span>03 / FORMACIÓN</span><strong>Ingeniería</strong><small
+            >Aprender, analizar y crear</small>
+        </div>
+      </div>
+    </section>
+    <section class="video-section" id="video">
+      <div class="video-heading">
+        <div>
+          <p class="eyebrow">02 / EN PRIMERA PERSONA</p><h2>
+            Mi presentación<span>.</span>
+          </h2>
+        </div><p>
+          Un poco sobre quién soy, por qué esta materia hace parte de mi
+          formación y qué quiero demostrar durante el semestre.
+        </p>
+      </div><div class="video-card">
+        <div class="video-top">
+          <span>VIDEO DE PRESENTACIÓN</span><span
+            >BASES DE DATOS 1 · UNIVERSIDAD EL BOSQUE</span>
+        </div><div class="video-frame">
           <iframe
             src="https://www.youtube.com/embed/Srzb67kSNsI"
             title="Video de presentación de Sebastián Castellanos"
-            style="
-              width: 100%;
-              height: 100%;
-              border: 0;
-              border-radius: 1rem;
-            "
+            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
+        </div><div class="video-bottom">
+          <span>SEBASTIÁN CASTELLANOS PARRA</span><a
+            href="https://www.youtube.com/watch?v=Srzb67kSNsI"
+            target="_blank"
+            rel="noopener noreferrer">Abrir en YouTube ↗</a>
         </div>
-      </GlassPanel>
-    </Section>
-
-    <Section
-      eyebrow="Sobre este espacio"
-      title="Un portafolio para aprender."
-      subtitle="Una forma de reunir los temas y el trabajo de Bases de Datos 1."
-      align="left"
-      container="xl"
-    >
-      <div class="about-hero__statement">
-        <p>
-          En Evidencias están los diagramas y talleres del curso, junto con el
-          contexto de las actividades. En el Blog reuní apuntes y ejemplos para
-          repasar las ideas principales.
-        </p>
-        <p>
-          Me interesa seguir mejorando mi forma de analizar problemas y entender
-          cómo organizar la información para usarla en proyectos de ingeniería.
-        </p>
       </div>
-    </Section>
-
-    <!-- ===== SECCIÓN: OBJETIVO ===== -->
-    <section class="principle">
-      <Container size="xl">
-        <p class="principle__index">Mi objetivo / 03</p>
-        <blockquote>
-          Este semestre quiero demostrar que...
-          <span>puedo mejorar, aprender y aplicar mis conocimientos.</span>
-        </blockquote>
-        <div class="principle__note">
-          <span class="principle__mark" aria-hidden="true">✦</span>
-          <p>
-            Quiero aprovechar cada actividad, proyecto y evidencia para mejorar
-            mis conocimientos en bases de datos y llevarlos a la práctica.
-          </p>
-        </div>
-      </Container>
     </section>
-  </main>
-
-  <Footer />
-</BaseLayout>
-
+    <section class="purpose">
+      <div class="story-label">
+        <span>03</span><small>EL PROPÓSITO</small>
+      </div><div class="purpose-main">
+        <p class="eyebrow">POR QUÉ BASES DE DATOS</p><h2>
+          Los datos tienen <span>una historia.</span>
+        </h2><p>
+          Aprender bases de datos me ayuda a pensar cómo representar un
+          problema, organizar la información y consultarla de forma que tenga
+          sentido para una aplicación.
+        </p><p>
+          En este portafolio conecto la teoría con los diagramas, talleres y el
+          proyecto final. Es una forma de mostrar el proceso, no solo el
+          resultado.
+        </p>
+      </div><aside class="purpose-note">
+        <span>MI OBJETIVO</span><blockquote>
+          “Este semestre quiero demostrar que puedo mejorar, aprender y aplicar
+          mis conocimientos.”
+        </blockquote><small>SEBASTIÁN · BASES DE DATOS 1</small>
+      </aside>
+    </section>
+    <section class="continue">
+      <div>
+        <p class="eyebrow">SIGUE EXPLORANDO</p><h2>
+          Conoce el trabajo <span>detrás del recorrido.</span>
+        </h2>
+      </div><div class="continue-links">
+        <a href="/work/#sigevet"
+          ><span>PROYECTO FINAL</span><strong>Conoce SIGEVET</strong><b>↗</b></a
+        ><a href="/work/"
+          ><span>ACTIVIDADES</span><strong>Explora mis evidencias</strong><b
+            >↗</b
+          ></a
+        ><a href="/blog/"
+          ><span>CUADERNO</span><strong>Lee mis apuntes</strong><b>↗</b></a
+        >{
+          siteConfig.social.github && (
+            <a
+              href={siteConfig.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <>
+                <span>GITHUB</span>
+                <strong>Mi perfil</strong>
+                <b>↗</b>
+              </>
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </main><Footer /></BaseLayout
+>
 <style>
-  /* ===== ESTILOS GLOBALES ===== */
-  main {
-    overflow: clip;
+  .about {
+    width: min(1200px, calc(100% - 2.5rem));
+    margin: auto;
   }
-
-  .about-hero {
-    padding-block: clamp(3rem, 8vw, 7rem);
-  }
-
-  .about-hero__panel {
-    min-height: min(47rem, calc(100vh - 8rem));
-    min-height: min(47rem, calc(100dvh - 8rem));
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .about-hero__meta,
-  .about-hero__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-lg);
-    color: var(--color-text-muted);
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    color: var(--color-accent-text);
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
   }
-
-  .about-hero__meta {
-    padding-bottom: var(--space-lg);
-    border-bottom: 1px solid var(--glass-border);
-  }
-
-  /* ===== CUERPO PRINCIPAL: FOTO IZQUIERDA | TEXTO DERECHA ===== */
-  .about-hero__body {
+  .intro {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(3rem, 7vw, 7rem);
     align-items: center;
-    gap: clamp(3rem, 8vw, 8rem);
-    padding-block: clamp(4rem, 10vw, 8rem);
+    padding: clamp(5rem, 10vw, 8rem) 0 6rem;
   }
-
-  /* ===== COLUMNA DE LA FOTO ===== */
-  .about-hero__photo-col {
+  .intro h1 {
+    font-size: clamp(4.5rem, 9vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+    margin: 1.5rem 0;
+  }
+  .intro h1 span,
+  .story h2 span,
+  .video-heading h2 span,
+  .purpose h2 span,
+  .continue h2 span {
+    color: var(--color-accent);
+  }
+  .lead {
+    max-width: 590px;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+  .intro-actions {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+  .intro-actions a {
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    padding: 0.85rem 1.2rem;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .intro-actions .primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+  .intro-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    color: var(--color-text-muted);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+  .portrait-card {
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 1.4rem;
+    background: color-mix(
+      in srgb,
+      var(--color-accent) 8%,
+      var(--color-surface)
+    );
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.12);
+  }
+  .portrait-top,
+  .portrait-bottom,
+  .video-top,
+  .video-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
     align-items: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: var(--color-text-muted);
+    padding: 0.3rem 0.25rem 1rem;
   }
-
-  .about-photo {
-    width: 200px;
-    height: 200px;
+  .portrait-frame {
+    position: relative;
+    border-radius: 1rem;
     overflow: hidden;
-    border-radius: 50%;
-    flex-shrink: 0;
-    border: 3px solid var(--glass-border);
+    min-height: 410px;
+    background: #292334;
   }
-
-  .about-photo img {
+  .portrait-frame:after {
+    content: '';
+    position: absolute;
+    inset: 30% 0 0;
+    background: linear-gradient(transparent, rgba(14, 8, 24, 0.8));
+    pointer-events: none;
+  }
+  .portrait-frame img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
+  }
+  .portrait-label {
+    position: absolute;
+    z-index: 1;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    color: white;
+  }
+  .portrait-label span,
+  .portrait-label strong {
     display: block;
   }
-
-  .about-photo-wrap {
-    position: relative;
-    padding: 0.65rem;
-    border-radius: 50%;
-    border: 1px solid color-mix(in srgb, var(--color-accent) 65%, transparent);
-    box-shadow:
-      0 0 0 1rem color-mix(in srgb, var(--color-accent) 7%, transparent),
-      0 0 4rem color-mix(in srgb, var(--color-accent) 22%, transparent);
+  .portrait-label span {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    color: #dfbaf7;
   }
-  .photo-badge {
-    position: absolute;
-    bottom: 0;
-    right: -1.5rem;
-    border: 1px solid var(--glass-border);
-    border-radius: 999px;
-    padding: 0.45rem 0.7rem;
-    background: var(--color-bg);
-    color: var(--color-text);
-    font-size: 0.65rem;
+  .portrait-label strong {
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    letter-spacing: -0.04em;
+    line-height: 1.06;
+    margin-top: 0.5rem;
+  }
+  .portrait-bottom {
+    padding: 1rem 0.25rem 0.3rem;
+  }
+  .portrait-bottom b {
+    color: var(--color-accent-text);
+    font-size: 1rem;
+  }
+  .divider-line {
+    display: flex;
+    gap: 1.4rem;
+    overflow: auto;
+    white-space: nowrap;
+    border-block: 1px solid var(--glass-border);
+    padding: 1rem 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+    font-weight: 800;
+  }
+  .divider-line i {
+    font-style: normal;
+    color: var(--color-accent-text);
+  }
+  .story,
+  .purpose {
+    display: grid;
+    grid-template-columns: 110px 1fr 0.75fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: 7rem 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .story-label span {
+    display: block;
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    color: var(--color-accent);
+  }
+  .story-label small {
+    font-size: 0.62rem;
     letter-spacing: 0.1em;
     font-weight: 800;
-    white-space: nowrap;
-  }
-  .photo-badge b {
-    color: var(--color-accent);
-  }
-
-  /* ===== COLUMNA DEL TEXTO ===== */
-  .about-hero__text-col {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-x1);
-  }
-
-  .about-hero__greeting {
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font-size: var(--text-xs);
-    font-weight: 700;
-    display: block;
-  }
-
-  h1 {
-    max-width: 13ch;
-    margin: 0;
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 0.88;
-    letter-spacing: -0.07em;
-  }
-
-  .about-hero__statement {
-    padding-left: var(--space-xl);
-    border-left: 2px solid var(--glass-border);
     color: var(--color-text-muted);
-    font-size: var(--text-lg);
   }
-
-  .about-hero__statement p:last-child {
-    margin-bottom: 0;
+  .story h2,
+  .video-heading h2,
+  .purpose h2,
+  .continue h2 {
+    font-size: clamp(2.7rem, 5vw, 4.5rem);
+    letter-spacing: -0.055em;
+    line-height: 1.02;
+    margin: 1rem 0;
   }
-
-  /* ===== FOOTER ===== */
-  .about-hero__footer {
-    align-items: flex-end;
-    padding-top: var(--space-lg);
+  .story-copy > p:not(.eyebrow),
+  .purpose-main > p:not(.eyebrow),
+  .video-heading > p {
+    color: var(--color-text-muted);
+    line-height: 1.75;
+  }
+  .interests {
     border-top: 1px solid var(--glass-border);
   }
-
-  .about-hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: var(--space-sm);
+  .interests > div {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--glass-border);
   }
-
-  /* ===== SECCIÓN PRINCIPLE (OBJETIVO) ===== */
-  .principle {
-    padding-block: clamp(7rem, 16vw, 14rem);
-  }
-
-  .principle__index {
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-  }
-
-  blockquote {
-    max-width: 15ch;
-    margin: clamp(3rem, 7vw, 6rem) 0;
-    font-size: clamp(3.2rem, 8vw, 7.5rem);
-    font-weight: 750;
-    line-height: 0.88;
-    letter-spacing: -0.07em;
-  }
-
-  blockquote span {
+  .interests span,
+  .interests strong,
+  .interests small {
     display: block;
-    color: var(--color-text-muted);
-    font-weight: 500;
   }
-
-  .principle__note {
+  .interests span {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-text);
+    font-weight: 800;
+  }
+  .interests strong {
+    font-size: 1.25rem;
+    margin: 0.35rem 0;
+  }
+  .interests small {
+    color: var(--color-text-muted);
+  }
+  .video-section {
+    scroll-margin-top: 6rem;
+    padding: 7rem 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .video-heading {
     display: grid;
-    grid-template-columns: auto minmax(15rem, 31rem);
-    justify-content: start;
-    align-items: start;
-    gap: var(--space-lg);
+    grid-template-columns: 1fr 0.7fr;
+    align-items: end;
+    gap: 3rem;
+    margin-bottom: 2rem;
   }
-
-  .principle__note p {
-    margin: 0;
-    color: var(--color-text-muted);
-    font-size: var(--text-lg);
+  .video-card {
+    padding: 1.1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 1.3rem;
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
   }
-
-  .principle__mark {
-    color: var(--color-accent);
-    font-size: var(--text-2xl);
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    .about-hero__body {
-      grid-template-columns: 1fr;
-      gap: var(--space-2xl);
-      text-align: center;
-    }
-
-    .about-hero__photo-col {
-      justify-content: center;
-    }
-
-    .about-photo {
-      width: 160px;
-      height: 160px;
-    }
-
-    .about-hero__statement {
-      padding-left: 0;
-      border-left: none;
-      padding-top: var(--space-lg);
-      border-top: 2px solid var(--glass-border);
-    }
-
-    h1 {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    .about-hero__greeting {
-      text-align: center;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .about-hero__meta,
-    .about-hero__footer {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-
-    .about-photo {
-      width: 140px;
-      height: 140px;
-    }
-
-    .about-hero__actions {
-      justify-content: flex-start;
-    }
-
-    .principle__note {
-      grid-template-columns: auto 1fr;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .format-card:nth-child(2) {
-      transform: none;
-    }
-  }
-
-  /* ===== SECCIÓN MER ===== */
-  .mer-container {
-    background-color: #ffffff;
-    border-radius: 1rem;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .video-frame {
+    aspect-ratio: 16/9;
     overflow: hidden;
+    border-radius: 0.8rem;
+    background: #15121a;
   }
-
-  .mer-image {
-    max-width: 100%;
-    height: auto;
+  .video-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
     display: block;
-    object-fit: contain;
+  }
+  .video-bottom {
+    padding: 1rem 0.25rem 0.2rem;
+  }
+  .video-bottom a {
+    color: var(--color-accent-text);
+    text-decoration: none;
+  }
+  .purpose-note {
+    border: 1px solid var(--glass-border);
+    border-radius: 1.2rem;
+    background: linear-gradient(145deg, #2b193d, #5b356b);
+    padding: 2rem;
+    color: #fff;
+    align-self: start;
+  }
+  .purpose-note span,
+  .purpose-note small {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    color: #e7c5f7;
+  }
+  .purpose-note blockquote {
+    margin: 2rem 0;
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+  }
+  .continue {
+    display: grid;
+    grid-template-columns: 1fr 0.75fr;
+    gap: 4rem;
+    padding: 7rem 0;
+  }
+  .continue-links {
+    border-top: 1px solid var(--glass-border);
+  }
+  .continue-links a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.35rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    text-decoration: none;
+  }
+  .continue-links span {
+    grid-column: 1/-1;
+    color: var(--color-accent-text);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+  }
+  .continue-links b {
+    color: var(--color-accent-text);
+  }
+  @media (max-width: 850px) {
+    .intro,
+    .video-heading,
+    .continue {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .portrait-card {
+      max-width: 600px;
+    }
+    .story,
+    .purpose {
+      grid-template-columns: 70px 1fr;
+      gap: 1rem;
+    }
+    .interests,
+    .purpose-note {
+      grid-column: 2;
+    }
+    .story,
+    .purpose,
+    .video-section,
+    .continue {
+      padding: 5rem 0;
+    }
+  }
+  @media (max-width: 550px) {
+    .intro {
+      padding-top: 4rem;
+    }
+    .portrait-frame {
+      min-height: 340px;
+    }
+    .story,
+    .purpose {
+      grid-template-columns: 1fr;
+    }
+    .interests,
+    .purpose-note {
+      grid-column: auto;
+    }
+    .story-label span {
+      display: inline;
+      margin-right: 0.5rem;
+    }
+    .video-top span:last-child,
+    .video-bottom span {
+      display: none;
+    }
   }
 </style>
