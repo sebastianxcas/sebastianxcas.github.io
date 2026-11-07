@@ -102,6 +102,30 @@ const props = Astro.props;
     <!-- Main Layout -->
     <slot />
 
+    <script>
+      if (
+        'IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        const observer = new IntersectionObserver(
+          (entries, instance) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('motion-in-view');
+                instance.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.08 },
+        );
+        document
+          .querySelectorAll(
+            '.case, .resource, .blueprint-grid article, .featured, .path-grid a, .profile-teaser, .about-hero__panel',
+          )
+          .forEach((element) => observer.observe(element));
+      }
+    </script>
+
     <!-- Theme Toggle (can be positioned by parent) -->
     {
       siteConfig.theme.showThemeToggle && (

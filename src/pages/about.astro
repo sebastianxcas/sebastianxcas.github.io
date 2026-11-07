@@ -34,8 +34,10 @@ import siteConfig from '@/site.config';
           <div class="about-hero__body">
             <!-- Columna 1: Foto -->
             <div class="about-hero__photo-col">
-              <div class="about-photo">
-                <img src="/sebastian.jpeg" alt="Sebastián Castellanos" />
+              <div class="about-photo-wrap">
+                <div class="about-photo">
+                  <img src="/sebastian.jpeg" alt="Sebastián Castellanos" />
+                </div><span class="photo-badge">SC <b>✦</b> BD1</span>
               </div>
             </div>
 
@@ -230,6 +232,33 @@ import siteConfig from '@/site.config';
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .about-photo-wrap {
+    position: relative;
+    padding: 0.65rem;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 65%, transparent);
+    box-shadow:
+      0 0 0 1rem color-mix(in srgb, var(--color-accent) 7%, transparent),
+      0 0 4rem color-mix(in srgb, var(--color-accent) 22%, transparent);
+  }
+  .photo-badge {
+    position: absolute;
+    bottom: 0;
+    right: -1.5rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    padding: 0.45rem 0.7rem;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .photo-badge b {
+    color: var(--color-accent);
   }
 
   /* ===== COLUMNA DEL TEXTO ===== */

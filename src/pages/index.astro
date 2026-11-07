@@ -21,15 +21,18 @@ import Footer from '@/components/common/Footer.astro';
           <span class="signature-mark">SC</span><span
             ><strong>Sebastián Castellanos Parra</strong><small
               >Ingeniería de Sistemas</small
-            ></span>
+            ></span
+          >
         </div>
         <div class="actions">
           <a class="primary" href="/work/">Ver mis evidencias ↗</a><a
-            href="/blog/">Explorar apuntes →</a>
+            href="/blog/">Explorar apuntes →</a
+          >
         </div>
         <div class="hero-topics" aria-label="Temas del portafolio">
           <span>01 · MODELADO</span><span>02 · NORMALIZACIÓN</span><span
-            >03 · SQL</span>
+            >03 · SQL</span
+          >
         </div>
       </div>
       <a
@@ -38,7 +41,7 @@ import Footer from '@/components/common/Footer.astro';
         aria-label="Explorar el modelo CineAndes en evidencias"
       >
         <div class="showcase-heading">
-          <span>TRABAJO DESTACADO</span><b>01 / 03</b>
+          <span>PARCIAL 1 · TRABAJO DESTACADO</span><b>01 / 03</b>
         </div>
         <div class="showcase-image">
           <img
@@ -48,7 +51,7 @@ import Footer from '@/components/common/Footer.astro';
         </div>
         <div class="showcase-caption">
           <div>
-            <small>MODELO ENTIDAD–RELACIÓN</small><strong
+            <small>MODELO DEL PARCIAL · ENTIDAD–RELACIÓN</small><strong
               >El caso CineAndes</strong
             ><p>Entidades, relaciones y reglas de negocio en un solo modelo.</p>
           </div><b aria-hidden="true">↗</b>
@@ -106,7 +109,25 @@ import Footer from '@/components/common/Footer.astro';
           src="/vistas/modelo-cineandes.png"
           alt="Vista previa del modelo entidad–relación de CineAndes"
           loading="lazy"
-        /><span>MODELO ENTIDAD–RELACIÓN · CINEANDES ↗</span></a
+        /><span>PARCIAL 1 · MODELO ENTIDAD–RELACIÓN · CINEANDES ↗</span></a
+      >
+    </section>
+    <section class="featured final-project">
+      <div class="featured-copy">
+        <p class="eyebrow">PROYECTO FINAL · EN EQUIPO</p><h2>
+          SIGEVET: de los modelos a la aplicación.
+        </h2><p>
+          Una red ficticia de clínicas veterinarias que reúne clientes,
+          mascotas, historias clínicas, citas e inventario. Mi participación se
+          enfocó en el análisis y modelado de datos.
+        </p><a href="/work/#sigevet">Conoce el proyecto final →</a>
+      </div>
+      <a class="featured-image" href="/work/#sigevet"
+        ><img
+          src="/vistas/sigevet-modelo-er.png"
+          alt="Vista previa del modelo entidad–relación de SIGEVET"
+          loading="lazy"
+        /><span>PROYECTO FINAL · SIGEVET ↗</span></a
       >
     </section>
     <section class="blueprint" aria-labelledby="blueprint-title">
@@ -219,6 +240,22 @@ WHERE codigo_sede = 1;</code></pre>
         >
       </div>
     </section>
+    <a class="profile-teaser" href="/about/">
+      <div class="profile-portrait">
+        <img src="/sebastian.jpeg" alt="Sebastián Castellanos" loading="lazy" />
+      </div>
+      <div class="profile-copy">
+        <p class="eyebrow">DETRÁS DEL PORTAFOLIO</p><h2>
+          Hola, soy Sebas<span>.</span>
+        </h2><p>
+          Estudiante de Ingeniería de Sistemas. Este espacio reúne mi recorrido
+          y lo que voy aprendiendo en Bases de Datos 1.
+        </p><strong>Conoce mi presentación y mi video →</strong>
+      </div>
+      <div class="profile-decoration" aria-hidden="true">
+        SC<br /><span>01 / BD</span>
+      </div>
+    </a>
     <section class="closing">
       <p class="eyebrow">BASES DE DATOS 1</p><h2>
         Aprender también es<br /><span>conectar ideas.</span>
@@ -872,5 +909,88 @@ WHERE codigo_sede = 1;</code></pre>
     .showcase-caption strong {
       font-size: 1.4rem;
     }
+  }
+
+  .profile-teaser {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: center;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-accent) 17%, var(--color-surface)),
+      var(--color-surface)
+    );
+    color: var(--color-text);
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .profile-portrait {
+    width: clamp(120px, 17vw, 200px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 0.4rem;
+    border: 1px solid var(--color-accent);
+  }
+  .profile-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+  .profile-copy h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    letter-spacing: -0.06em;
+    line-height: 1;
+    margin: 0.7rem 0;
+  }
+  .profile-copy h2 span {
+    color: var(--color-accent);
+  }
+  .profile-copy > p:not(.eyebrow) {
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    max-width: 540px;
+  }
+  .profile-copy strong {
+    color: var(--color-accent-text);
+    font-size: 0.9rem;
+  }
+  .profile-decoration {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.08em;
+    color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+    line-height: 0.6;
+  }
+  .profile-decoration span {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+  .closing {
+    padding-top: 6rem;
+  }
+  @media (max-width: 700px) {
+    .profile-teaser {
+      grid-template-columns: 1fr;
+    }
+    .profile-decoration {
+      display: none;
+    }
+    .profile-portrait {
+      width: 115px;
+    }
+  }
+  .final-project {
+    margin-top: 1.3rem;
+    border-color: color-mix(
+      in srgb,
+      var(--color-accent) 45%,
+      var(--glass-border)
+    );
   }
 </style>

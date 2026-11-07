@@ -490,25 +490,99 @@ const sqlResources = [
     <section class="section" id="proyecto">
       <div class="section-header">
         <span>04 / PROYECTO</span><div>
-          <h2>Un caso para integrar conceptos</h2><p>
-            El modelo CineAndes reúne reglas de negocio, entidades débiles y
-            relaciones del curso.
+          <h2>Del parcial al proyecto final</h2><p>
+            Dos evidencias que conectan el diseño de modelos con la aplicación
+            de las bases de datos.
           </p>
         </div>
       </div>
-      <article class="case">
+      <article class="case project-case" id="sigevet">
         <div class="case-heading">
           <div>
-            <p class="label">MODELO ENTIDAD–RELACIÓN · CINEANDES</p><h3>
-              Una cadena de salas de cine
+            <p class="label">PROYECTO FINAL · TRABAJO EN EQUIPO</p><h3>
+              SIGEVET: gestión veterinaria
             </h3>
-          </div><span class="pill">Diagrama</span>
+          </div><span class="pill">Proyecto final</span>
+        </div>
+        <div class="project-summary">
+          <p>
+            Un sistema para una red de clínicas veterinarias que conecta el
+            diseño de la base de datos con una aplicación web.
+          </p><div class="project-tags">
+            <span>MODELADO DE DATOS</span><span>MYSQL</span><span>JAVA</span
+            ><span>ANGULAR</span>
+          </div>
         </div>
         <div class="case-copy">
           <p>
-            <strong>La actividad.</strong> A partir del caso de CineAndes se representa
-            una cadena con sedes, salas, sillas, funciones, películas, clientes y
-            empleados, entre otros elementos.
+            <strong>La actividad.</strong> SIGEVET representa una red ficticia de
+            clínicas: clientes, mascotas, historias clínicas, citas, consultas, inventario
+            y facturación. Mi rol en el equipo fue de analista y modelador de datos,
+            según la documentación del proyecto.
+          </p><p>
+            <strong>Lo que me deja.</strong> El proyecto reúne el modelo entidad–relación,
+            la transformación a tablas, la normalización y las consultas. La base
+            en MySQL se conecta con una API en Java y una interfaz en Angular.
+          </p>
+        </div>
+        <figure class="visual">
+          <a
+            href="/vistas/sigevet-modelo-er.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img
+              src="/vistas/sigevet-modelo-er.png"
+              alt="Modelo entidad–relación global del proyecto SIGEVET"
+              loading="lazy"
+            /></a
+          ><figcaption>
+            SIGEVET · modelo entidad–relación global en notación Chen · pulsa
+            para ampliar ↗
+          </figcaption>
+        </figure>
+        <details class="inline-details">
+          <summary>Ver el modelo relacional del proyecto</summary><figure
+            class="visual sigevet-relational"
+          >
+            <a
+              href="/vistas/sigevet-modelo-relacional.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img
+                src="/vistas/sigevet-modelo-relacional.png"
+                alt="Modelo relacional global de SIGEVET"
+                loading="lazy"
+              /></a
+            ><figcaption>
+              Modelo relacional global · pulsa para ampliar ↗
+            </figcaption>
+          </figure>
+        </details>
+        <div class="links">
+          <a
+            href="https://github.com/Estarlan/proyecto-bd1-sigevet"
+            target="_blank"
+            rel="noopener noreferrer">Ver repositorio del proyecto ↗</a
+          ><a
+            href="https://github.com/Estarlan/proyecto-bd1-sigevet/tree/main/documentos/fase1/diagramas_drawio"
+            target="_blank"
+            rel="noopener noreferrer">Explorar los modelos ↗</a
+          ><a href="/blog/sigevet/">Leer sobre el proyecto →</a>
+        </div>
+      </article>
+      <article class="case">
+        <div class="case-heading">
+          <div>
+            <p class="label">
+              PARCIAL 1 · MODELO ENTIDAD–RELACIÓN · CINEANDES
+            </p><h3>CineAndes: modelo del parcial</h3>
+          </div><span class="pill">Parcial 1</span>
+        </div>
+        <div class="case-copy">
+          <p>
+            <strong>La actividad.</strong> En el parcial se propuso modelar el caso
+            de CineAndes: se representa una cadena con sedes, salas, sillas, funciones,
+            películas, clientes y empleados, entre otros elementos.
           </p><p>
             <strong>Lo que me deja.</strong> Las entidades débiles muestran que un
             número de sala o una silla necesitan el contexto de su propietaria para
@@ -527,14 +601,19 @@ const sqlResources = [
               loading="lazy"
             /></a
           ><figcaption>
-            Modelo CineAndes · pulsa la imagen para ampliar y leer el detalle ↗
+            Resolución del modelo entidad–relación del parcial · pulsa para
+            ampliar ↗
           </figcaption>
         </figure>
         <div class="links">
           <a href="/vistas/modelo-cineandes.png">Abrir imagen PNG ↗</a><a
             href="/archivos/modelo-cineandes.drawio"
             >Archivo editable .drawio ↓</a
-          >
+          ><a
+            href="/archivos/parcial-1.png"
+            target="_blank"
+            rel="noopener noreferrer">Ver el enunciado del parcial ↗</a
+          ><a href="/blog/entidades-debiles/">Repasar entidades débiles →</a>
         </div>
       </article>
       <details class="support">
@@ -582,6 +661,7 @@ const sqlResources = [
   </main>
   <Footer />
 </BaseLayout>
+
 <style>
   .portfolio {
     width: min(1180px, calc(100% - 2.5rem));
@@ -974,6 +1054,61 @@ const sqlResources = [
     }
     .section {
       padding: 3.5rem 0;
+    }
+  }
+
+  .project-case {
+    scroll-margin-top: 6rem;
+    border-color: color-mix(
+      in srgb,
+      var(--color-accent) 45%,
+      var(--glass-border)
+    );
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--color-accent) 10%, var(--color-surface)),
+      var(--color-surface)
+    );
+  }
+  .project-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin: 1rem 0 2rem;
+    padding: 1.3rem 0;
+    border-block: 1px solid var(--glass-border);
+  }
+  .project-summary > p {
+    max-width: 550px;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-end;
+  }
+  .project-tags span {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: var(--color-accent-text);
+  }
+  .sigevet-relational {
+    margin-top: 1rem;
+  }
+  @media (max-width: 700px) {
+    .project-summary {
+      display: block;
+    }
+    .project-tags {
+      justify-content: flex-start;
+      margin-top: 1rem;
     }
   }
 </style>
