@@ -2,187 +2,543 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
-import PostGrid from '@/components/blog/PostGrid.astro';
-import { getPublishedPosts } from '@/lib/posts';
-
+import { getPublishedPosts, readingTime } from '@/lib/posts';
 const allPosts = await getPublishedPosts();
 const sections = [
   {
     id: 'fundamentos',
-    label: '01 / Fundamentos',
-    title: 'Entender los datos',
-    description: 'Bases de datos, gestores y niveles de diseño.',
+    number: '01',
+    label: 'LOS CIMIENTOS',
+    title: 'Antes de las tablas',
+    description:
+      'Una base de datos parte de una pregunta: ¿qué información necesitamos guardar y para qué?',
     tags: ['Fundamentos'],
+    featured: 'tres-niveles',
+    concept: 'CONCEPTUAL → LÓGICO → FÍSICO',
+    insight:
+      'Un mismo problema puede entenderse, organizarse e implementarse desde tres niveles distintos.',
+    evidence: '/work/#modelado',
+    evidenceLabel: 'Ver el modelado en clase',
   },
   {
     id: 'modelado',
-    label: '02 / Modelado',
-    title: 'Representar el problema',
-    description: 'Entidades, relaciones, cardinalidad y transformación.',
+    number: '02',
+    label: 'EL DISEÑO',
+    title: 'Dibujar las relaciones',
+    description:
+      'El modelo entidad–relación convierte las reglas de un caso en un mapa que se puede revisar.',
     tags: ['Modelado', 'Modelo relacional'],
+    featured: 'entidades-debiles',
+    concept: 'SEDE  1 ─── N  SALA',
+    insight:
+      'Una sala necesita el contexto de su sede para identificarse cuando el número se repite.',
+    evidence: '/work/#cineandes',
+    evidenceLabel: 'Explorar el parcial CineAndes',
   },
   {
     id: 'relacional',
-    label: '03 / Modelo relacional',
-    title: 'Organizar y razonar',
-    description: 'Claves, dependencias, normalización y álgebra relacional.',
+    number: '03',
+    label: 'LA ESTRUCTURA',
+    title: 'Organizar para cuidar',
+    description:
+      'Las claves, dependencias y formas normales ayudan a construir tablas coherentes.',
     tags: ['Relacional', 'Normalización'],
+    featured: 'dependencias-funcionales',
+    concept: 'CÓDIGO → NOMBRE',
+    insight:
+      'Una dependencia funcional expresa una regla sobre los valores que pueden tener los datos.',
+    evidence: '/work/#normalizacion',
+    evidenceLabel: 'Ver el taller de normalización',
   },
   {
     id: 'sql',
-    label: '04 / SQL',
-    title: 'Consultar la información',
-    description: 'Consultas, funciones, agrupaciones y combinaciones.',
+    number: '04',
+    label: 'LA CONSULTA',
+    title: 'Hacer preguntas a los datos',
+    description:
+      'SQL permite seleccionar, filtrar, agrupar y combinar información para responder preguntas.',
     tags: ['SQL'],
+    featured: 'sql-joins',
+    concept: 'SELECT  ·  FROM  ·  WHERE',
+    insight:
+      'La consulta empieza por identificar qué tablas, columnas y condiciones necesita la pregunta.',
+    evidence: '/work/#sigevet',
+    evidenceLabel: 'Conocer el proyecto SIGEVET',
   },
 ];
 const assigned = new Set<string>();
 const groups = sections.map((section) => {
   const posts = allPosts.filter((post) => {
-    if (assigned.has(post.id)) return false;
-    if (!post.data.tags.some((tag) => section.tags.includes(tag))) return false;
+    if (
+      assigned.has(post.id) ||
+      !post.data.tags.some((tag) => section.tags.includes(tag))
+    )
+      return false;
     assigned.add(post.id);
     return true;
   });
-  return { ...section, posts };
+  const lead = posts.find((post) => post.id === section.featured);
+  return {
+    ...section,
+    lead,
+    rest: posts.filter((post) => post.id !== section.featured),
+  };
 });
 ---
 
-<BaseLayout title="Blog" description="Apuntes de estudio de Bases de Datos 1."
+<BaseLayout title="Blog" description="Cuaderno de estudio de Bases de Datos 1."
   ><Header />
   <main id="main" tabindex="-1" class="journal">
     <header class="journal-hero">
-      <p class="eyebrow">BASES DE DATOS 1 · CUADERNO DE ESTUDIO</p><h1>
-        Ideas para <span>conectar los datos.</span>
-      </h1><p>
-        Conceptos, ejemplos y apuntes organizados para repasar los temas del
-        curso.
-      </p><nav aria-label="Temas del blog">
-        {
+      <div>
+        <p class="eyebrow">EL CUADERNO · BASES DE DATOS 1</p><h1>
+          Las ideas detrás <span>de los datos.</span>
+        </h1><p>
+          Un recorrido por los conceptos del curso, con ejemplos para entender
+          cómo se conectan con los ejercicios y proyectos.
+        </p><a class="hero-link" href="#fundamentos">Empezar a explorar ↓</a>
+      </div><div class="hero-index">
+        <p>EN ESTE CUADERNO</p>{
           groups.map((g) => (
-            <a href={'#' + g.id}>{g.label.split(' / ')[1]} ↓</a>
+            <a href={'#' + g.id}>
+              <>
+                <span>{g.number}</span>
+                <strong>{g.title}</strong>
+                <b>↗</b>
+              </>
+            </a>
           ))
         }
-      </nav>
+      </div>
     </header>
+    <div class="journal-line">
+      <span>CONCEPTOS</span><i>✦</i><span>EJEMPLOS</span><i>✦</i><span
+        >APRENDIZAJES</span
+      ><i>✦</i><span>PRÁCTICA</span>
+    </div>
     {
       groups.map((g) => (
-        <section class="journal-section" id={g.id}>
-          <>
-            <div class="section-heading">
+        <section class:list={['chapter', 'chapter--' + g.id]} id={g.id}>
+          <div class="chapter-intro">
+            <>
+              <div class="chapter-marker">
+                <>
+                  <span>{g.number}</span>
+                  <small>{g.label}</small>
+                </>
+              </div>
+              <div>
+                <>
+                  <h2>{g.title}</h2>
+                  <p>{g.description}</p>
+                </>
+              </div>
+              <span class="chapter-count">
+                {g.rest.length + (g.lead ? 1 : 0)} ENTRADAS
+              </span>
+            </>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-feature">
               <>
-                <div>
+                <div
+                  class="concept-visual"
+                  aria-label={'Idea clave: ' + g.concept}
+                >
                   <>
-                    <p class="eyebrow">{g.label}</p>
-                    <h2>{g.title}</h2>
-                    <p>{g.description}</p>
+                    <span>UNA IDEA PARA RECORDAR</span>
+                    <strong>{g.concept}</strong>
+                    <i aria-hidden="true">✳</i>
                   </>
                 </div>
-                <span>{g.posts.length} entradas</span>
+                <div class="feature-copy">
+                  <p>{g.insight}</p>
+                  {g.lead && (
+                    <a href={'/blog/' + g.lead.id + '/'}>
+                      Leer: {g.lead.data.title} →
+                    </a>
+                  )}
+                </div>
+                <a class="evidence-link" href={g.evidence}>
+                  <>
+                    <span>DEL CONCEPTO A LA PRÁCTICA</span>
+                    <strong>{g.evidenceLabel} ↗</strong>
+                  </>
+                </a>
               </>
             </div>
-            <PostGrid posts={g.posts} />
-          </>
+            <div class="reading-list">
+              <div class="list-heading">
+                <>
+                  <span>PARA SEGUIR LEYENDO</span>
+                  <span>{g.rest.length} APUNTES</span>
+                </>
+              </div>
+              {g.rest.map((post, index) => (
+                <a class="reading-row" href={'/blog/' + post.id + '/'}>
+                  <span class="row-number">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3>{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                    <small>{readingTime(post.body)} MIN DE LECTURA</small>
+                  </div>
+                  <b aria-hidden="true">↗</b>
+                </a>
+              ))}
+            </div>
+          </div>
         </section>
       ))
     }
-    <div class="endnote">
-      <p>
-        Los ejemplos de las entradas son ilustrativos. Las actividades y
-        archivos del semestre están reunidos por separado.
-      </p><a href="/work/">Explorar evidencias →</a>
-    </div>
-  </main><Footer />
-</BaseLayout>
+    <section class="journal-end">
+      <div>
+        <p class="eyebrow">SIGUE EL HILO</p><h2>
+          Las ideas cobran forma<br /><span>cuando se ponen a prueba.</span>
+        </h2><p>
+          Explora los diagramas, el parcial y el proyecto final para ver estos
+          conceptos en contexto.
+        </p>
+      </div><div class="end-links">
+        <a href="/work/#sigevet"
+          ><span>PROYECTO FINAL</span><strong>Conoce SIGEVET</strong><b>↗</b></a
+        ><a href="/work/#cineandes"
+          ><span>EVIDENCIAS</span><strong>Revisa el parcial</strong><b>↗</b></a
+        >
+      </div>
+    </section>
+  </main><Footer /></BaseLayout
+>
 <style>
   .journal {
     width: min(1200px, calc(100% - 2.5rem));
     margin: auto;
   }
-  .journal-hero {
-    padding: clamp(5rem, 10vw, 9rem) 0 5rem;
-    max-width: 1000px;
-  }
   .eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.13em;
-    color: var(--color-accent);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    color: var(--color-accent-text);
     font-weight: 800;
     text-transform: uppercase;
   }
-  .journal-hero h1 {
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    line-height: 0.97;
-    letter-spacing: -0.065em;
-    margin: 1.6rem 0;
+  .journal-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: end;
+    padding: clamp(5rem, 10vw, 9rem) 0 5rem;
   }
-  .journal-hero h1 span {
+  .journal-hero h1 {
+    font-size: clamp(3.8rem, 7.2vw, 6.8rem);
+    line-height: 0.96;
+    letter-spacing: -0.065em;
+    margin: 1.5rem 0;
+  }
+  .journal-hero h1 span,
+  .journal-end h2 span {
     color: var(--color-accent);
   }
-  .journal-hero > p:not(.eyebrow) {
-    font-size: 1.2rem;
+  .journal-hero > div:first-child > p:not(.eyebrow) {
+    font-size: 1.15rem;
     color: var(--color-text-muted);
-    line-height: 1.6;
-    max-width: 650px;
+    line-height: 1.7;
+    max-width: 610px;
   }
-  .journal-hero nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
-    margin-top: 2rem;
-  }
-  .journal-hero nav a {
+  .hero-link {
+    display: inline-block;
+    margin-top: 1.5rem;
     border: 1px solid var(--glass-border);
     border-radius: 100px;
-    padding: 0.65rem 1rem;
+    padding: 0.8rem 1.2rem;
     text-decoration: none;
-    font-size: 0.85rem;
     font-weight: 700;
   }
-  .journal-section {
-    scroll-margin-top: 6rem;
-    padding: 4rem 0;
+  .hero-index {
     border-top: 1px solid var(--glass-border);
   }
-  .section-heading {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    align-items: end;
-    margin-bottom: 2rem;
-  }
-  .section-heading h2 {
-    font-size: clamp(2.2rem, 4vw, 3.4rem);
-    letter-spacing: -0.045em;
-    line-height: 1.05;
-    margin: 0.6rem 0;
-  }
-  .section-heading p:not(.eyebrow),
-  .section-heading span,
-  .endnote p {
+  .hero-index > p,
+  .list-heading {
+    font-size: 0.65rem;
+    letter-spacing: 0.13em;
+    font-weight: 800;
     color: var(--color-text-muted);
   }
-  .section-heading span {
+  .hero-index a {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    text-decoration: none;
+    align-items: center;
+  }
+  .hero-index a span,
+  .hero-index a b {
+    color: var(--color-accent-text);
+    font-size: 0.8rem;
+  }
+  .hero-index a strong {
+    font-size: 1rem;
+  }
+  .journal-line {
+    display: flex;
+    gap: 1.4rem;
+    overflow: auto;
     white-space: nowrap;
-    font-size: 0.85rem;
+    padding: 1rem 0;
+    border-block: 1px solid var(--glass-border);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    color: var(--color-text-muted);
   }
-  .endnote {
-    padding: 2rem 0 7rem;
+  .journal-line i {
+    font-style: normal;
+    color: var(--color-accent-text);
   }
-  .endnote a {
+  .chapter {
+    scroll-margin-top: 6rem;
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .chapter-intro {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 2.5rem;
+  }
+  .chapter-marker span {
+    display: block;
+    font-size: 3rem;
+    line-height: 1;
     color: var(--color-accent);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+  }
+  .chapter-marker small,
+  .chapter-count {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: var(--color-text-muted);
+  }
+  .chapter-intro h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    letter-spacing: -0.055em;
+    line-height: 1;
+    margin: 0 0 0.8rem;
+  }
+  .chapter-intro p {
+    color: var(--color-text-muted);
+    max-width: 700px;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .chapter-count {
+    padding-top: 0.5rem;
+    white-space: nowrap;
+  }
+  .chapter-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .chapter-feature {
+    border: 1px solid var(--glass-border);
+    border-radius: 1.4rem;
+    overflow: hidden;
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
+  }
+  .concept-visual {
+    min-height: 225px;
+    padding: 1.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #26163c, #58316d);
+    color: #f9f4ff;
+  }
+  .chapter--modelado .concept-visual {
+    background: linear-gradient(145deg, #143b43, #1f6c69);
+  }
+  .chapter--relacional .concept-visual {
+    background: linear-gradient(145deg, #472642, #874462);
+  }
+  .chapter--sql .concept-visual {
+    background: linear-gradient(145deg, #202d50, #465a91);
+  }
+  .concept-visual span {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    color: #e3c7f7;
+    position: relative;
+    z-index: 1;
+  }
+  .concept-visual strong {
+    font-size: clamp(1.4rem, 2.5vw, 2.3rem);
+    letter-spacing: -0.04em;
+    max-width: 90%;
+    position: relative;
+    z-index: 1;
+  }
+  .concept-visual i {
+    position: absolute;
+    right: -0.05em;
+    bottom: -0.25em;
+    font-style: normal;
+    font-size: 15rem;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.09);
+  }
+  .feature-copy {
+    padding: 1.6rem;
+  }
+  .feature-copy > p:not(.eyebrow) {
+    font-size: 1.12rem;
+    line-height: 1.65;
+  }
+  .feature-copy a,
+  .evidence-link strong {
+    color: var(--color-accent-text);
     font-weight: 700;
     text-decoration: none;
   }
-  @media (max-width: 600px) {
-    .section-heading {
-      display: block;
+  .evidence-link {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--glass-border);
+    padding: 1.2rem 1.6rem;
+    text-decoration: none;
+  }
+  .evidence-link span {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: var(--color-text-muted);
+  }
+  .list-heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 1rem;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .reading-row {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 1.3rem 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .row-number,
+  .reading-row > b {
+    color: var(--color-accent-text);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+  .reading-row h3 {
+    font-size: 1.13rem;
+    line-height: 1.25;
+    margin: 0 0 0.35rem;
+  }
+  .reading-row p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 0.5rem;
+  }
+  .reading-row small {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+  .reading-row:hover h3,
+  .hero-index a:hover strong {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+  }
+  .journal-end {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    gap: 4rem;
+    padding: 7rem 0;
+  }
+  .journal-end h2 {
+    font-size: clamp(2.7rem, 5vw, 4.5rem);
+    letter-spacing: -0.055em;
+    line-height: 1.04;
+  }
+  .journal-end p:not(.eyebrow) {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+  .end-links {
+    border-top: 1px solid var(--glass-border);
+  }
+  .end-links a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.3rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    text-decoration: none;
+  }
+  .end-links span {
+    grid-column: 1/-1;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-text);
+    font-weight: 800;
+  }
+  .end-links b {
+    color: var(--color-accent-text);
+  }
+  @media (max-width: 800px) {
+    .journal-hero,
+    .chapter-layout,
+    .journal-end {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
-    .journal-section {
-      padding: 3rem 0;
+    .chapter-intro {
+      grid-template-columns: 65px 1fr;
+      gap: 1rem;
     }
+    .chapter-count {
+      grid-column: 2;
+    }
+    .chapter {
+      padding: 4rem 0;
+    }
+    .journal-end {
+      padding: 5rem 0;
+    }
+  }
+  @media (max-width: 520px) {
     .journal-hero {
       padding-top: 4rem;
+    }
+    .chapter-intro {
+      grid-template-columns: 1fr;
+    }
+    .chapter-count {
+      grid-column: auto;
+    }
+    .chapter-marker span {
+      display: inline;
+      margin-right: 0.5rem;
+    }
+    .concept-visual {
+      min-height: 185px;
     }
   }
 </style>

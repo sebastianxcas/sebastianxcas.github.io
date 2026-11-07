@@ -37,7 +37,7 @@ import Footer from '@/components/common/Footer.astro';
       </div>
       <a
         class="hero-showcase"
-        href="/work/#proyecto"
+        href="/work/#cineandes"
         aria-label="Explorar el modelo CineAndes en evidencias"
       >
         <div class="showcase-heading">
@@ -95,40 +95,61 @@ import Footer from '@/components/common/Footer.astro';
         >
       </div>
     </section>
-    <section class="featured">
-      <div class="featured-copy">
-        <p class="eyebrow">UNA MIRADA AL TRABAJO</p><h2>
-          Del dibujo a las decisiones.
-        </h2><p>
-          Los modelos permiten pensar cómo se relacionan los datos antes de
-          convertirlos en tablas. En Evidencias se encuentran diagramas,
-          talleres y el contexto de cada actividad.
-        </p><a href="/work/#proyecto">Explorar el modelo CineAndes →</a>
-      </div><a class="featured-image" href="/work/#proyecto"
-        ><img
-          src="/vistas/modelo-cineandes.png"
-          alt="Vista previa del modelo entidad–relación de CineAndes"
-          loading="lazy"
-        /><span>PARCIAL 1 · MODELO ENTIDAD–RELACIÓN · CINEANDES ↗</span></a
-      >
-    </section>
-    <section class="featured final-project">
-      <div class="featured-copy">
-        <p class="eyebrow">PROYECTO FINAL · EN EQUIPO</p><h2>
-          SIGEVET: de los modelos a la aplicación.
-        </h2><p>
-          Una red ficticia de clínicas veterinarias que reúne clientes,
-          mascotas, historias clínicas, citas e inventario. Mi participación se
-          enfocó en el análisis y modelado de datos.
-        </p><a href="/work/#sigevet">Conoce el proyecto final →</a>
+    <section class="work-showcase" aria-labelledby="work-showcase-title">
+      <div class="showcase-intro">
+        <div>
+          <p class="eyebrow">EL CURSO EN LA PRÁCTICA</p><h2
+            id="work-showcase-title"
+          >
+            Dos casos, <span>una forma de pensar.</span>
+          </h2>
+        </div><p>
+          Del modelo de un parcial a la estructura de un proyecto final: cada
+          evidencia muestra una etapa del aprendizaje.
+        </p>
       </div>
-      <a class="featured-image" href="/work/#sigevet"
-        ><img
-          src="/vistas/sigevet-modelo-er.png"
-          alt="Vista previa del modelo entidad–relación de SIGEVET"
-          loading="lazy"
-        /><span>PROYECTO FINAL · SIGEVET ↗</span></a
-      >
+      <div class="case-pair">
+        <a class="case-tile case-tile--final" href="/work/#sigevet"
+          ><div class="tile-meta">
+            <span>PROYECTO FINAL · EN EQUIPO</span><b>01 / 02</b>
+          </div><div class="tile-image">
+            <img
+              src="/vistas/sigevet-modelo-er.png"
+              alt="Modelo entidad–relación de SIGEVET"
+              loading="lazy"
+            />
+          </div><div class="tile-body">
+            <div>
+              <small>MODELAR · NORMALIZAR · CONSULTAR</small><h3>SIGEVET</h3><p>
+                El diseño de datos de una red veterinaria, conectado con una
+                aplicación web.
+              </p>
+            </div><strong aria-hidden="true">↗</strong>
+          </div></a
+        >
+        <a class="case-tile case-tile--exam" href="/work/#cineandes"
+          ><div class="tile-meta">
+            <span>PARCIAL 1 · MODELADO</span><b>02 / 02</b>
+          </div><div class="tile-image">
+            <img
+              src="/vistas/modelo-cineandes.png"
+              alt="Modelo entidad–relación de CineAndes"
+              loading="lazy"
+            />
+          </div><div class="tile-body">
+            <div>
+              <small>ENTIDADES · RELACIONES · CLAVES</small><h3>CineAndes</h3><p
+              >
+                Un modelo para entender las reglas de una cadena de salas de
+                cine.
+              </p>
+            </div><strong aria-hidden="true">↗</strong>
+          </div></a>
+      </div>
+      <div class="showcase-bottom">
+        <span>EL TRABAJO DETRÁS DEL APRENDIZAJE</span><a href="/work/"
+          >Explorar todas las evidencias →</a>
+      </div>
     </section>
     <section class="blueprint" aria-labelledby="blueprint-title">
       <div class="blueprint-heading">
@@ -240,22 +261,6 @@ WHERE codigo_sede = 1;</code></pre>
         >
       </div>
     </section>
-    <a class="profile-teaser" href="/about/">
-      <div class="profile-portrait">
-        <img src="/sebastian.jpeg" alt="Sebastián Castellanos" loading="lazy" />
-      </div>
-      <div class="profile-copy">
-        <p class="eyebrow">DETRÁS DEL PORTAFOLIO</p><h2>
-          Hola, soy Sebas<span>.</span>
-        </h2><p>
-          Estudiante de Ingeniería de Sistemas. Este espacio reúne mi recorrido
-          y lo que voy aprendiendo en Bases de Datos 1.
-        </p><strong>Conoce mi presentación y mi video →</strong>
-      </div>
-      <div class="profile-decoration" aria-hidden="true">
-        SC<br /><span>01 / BD</span>
-      </div>
-    </a>
     <section class="closing">
       <p class="eyebrow">BASES DE DATOS 1</p><h2>
         Aprender también es<br /><span>conectar ideas.</span>
@@ -992,5 +997,143 @@ WHERE codigo_sede = 1;</code></pre>
       var(--color-accent) 45%,
       var(--glass-border)
     );
+  }
+
+  .work-showcase {
+    padding: 3rem 0 6rem;
+  }
+  .showcase-intro {
+    display: grid;
+    grid-template-columns: 1fr 0.65fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+  .showcase-intro h2 {
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    margin: 1rem 0;
+  }
+  .showcase-intro h2 span {
+    color: var(--color-accent);
+  }
+  .showcase-intro > p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+  .case-pair {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1rem;
+  }
+  .case-tile {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--glass-border);
+    border-radius: 1.4rem;
+    padding: 1.1rem;
+    text-decoration: none;
+    color: var(--color-text);
+    background: var(--glass-background, rgba(128, 128, 128, 0.06));
+    overflow: hidden;
+  }
+  .case-tile--final {
+    background: linear-gradient(
+      150deg,
+      color-mix(in srgb, var(--color-accent) 14%, var(--color-surface)),
+      var(--color-surface)
+    );
+  }
+  .tile-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.3rem 0.25rem 1rem;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+  .tile-meta b {
+    color: var(--color-accent-text);
+  }
+  .tile-image {
+    display: grid;
+    place-items: center;
+    background: #fff;
+    border-radius: 0.9rem;
+    min-height: 260px;
+    overflow: hidden;
+  }
+  .tile-image img {
+    display: block;
+    width: 100%;
+    height: 310px;
+    object-fit: contain;
+  }
+  .tile-body {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.4rem 0.3rem 0.4rem;
+  }
+  .tile-body small {
+    color: var(--color-accent-text);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+  }
+  .tile-body h3 {
+    font-size: 2rem;
+    letter-spacing: -0.05em;
+    margin: 0.4rem 0;
+  }
+  .tile-body p {
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .tile-body > strong {
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--glass-border);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    color: var(--color-accent-text);
+    flex: none;
+  }
+  .showcase-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+  }
+  .showcase-bottom span {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: var(--color-text-muted);
+  }
+  .showcase-bottom a {
+    color: var(--color-accent-text);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  @media (max-width: 800px) {
+    .showcase-intro,
+    .case-pair {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .tile-image img {
+      height: 250px;
+    }
+    .work-showcase {
+      padding-bottom: 4rem;
+    }
   }
 </style>

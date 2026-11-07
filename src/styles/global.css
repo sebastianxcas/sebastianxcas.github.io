@@ -371,7 +371,8 @@ button {
   .resource,
   .hero-showcase,
   .path-grid a,
-  .profile-teaser {
+  .case-tile,
+  .chapter-feature {
     transition:
       transform 0.25s ease,
       box-shadow 0.25s ease,
@@ -381,7 +382,8 @@ button {
   .resource:hover,
   .hero-showcase:hover,
   .path-grid a:hover,
-  .profile-teaser:hover {
+  .case-tile:hover,
+  .chapter-feature:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 50px rgba(24, 10, 40, 0.14);
   }
