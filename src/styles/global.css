@@ -351,3 +351,12 @@ button {
     display: flex;
   }
 }
+
+/* Presentación estática: el portafolio no usa movimiento ni transiciones. */
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}

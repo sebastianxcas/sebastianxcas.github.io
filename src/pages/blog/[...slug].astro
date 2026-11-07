@@ -60,7 +60,7 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
     <article class="blog-post">
       <div class="container">
         <GlassPanel variant="solid" padding="xl" className="post-header">
-          <a href={withBase('/blog/')} class="post-back">← Back to blog</a>
+          <a href={withBase('/blog/')} class="post-back">← Volver al blog</a>
           <h1 class="post-title">{post.data.title}</h1>
 
           <div class="post-meta">
@@ -73,7 +73,7 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
                   <span class="separator" aria-hidden="true">
                     ·
                   </span>
-                  <span>Updated {updatedDate}</span>
+                  <span>Actualizado {updatedDate}</span>
                 </>
               )
             }
@@ -83,7 +83,7 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
                   <span class="separator" aria-hidden="true">
                     ·
                   </span>
-                  <span>{minutes} min read</span>
+                  <span>{minutes} min de lectura</span>
                 </>
               )
             }
@@ -93,7 +93,7 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
                   <span class="separator" aria-hidden="true">
                     ·
                   </span>
-                  <span>By {post.data.author}</span>
+                  <span>Por {post.data.author}</span>
                 </>
               )
             }
@@ -147,7 +147,7 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
           siteConfig.blog.showShareButtons && (
             <GlassPanel variant="default" padding="lg" className="post-footer">
               <div class="share-section">
-                <h2 class="share-title">Share this post</h2>
+                <h2 class="share-title">Compartir esta entrada</h2>
                 <div class="share-buttons">
                   <a
                     href={tweetUrl}
@@ -166,7 +166,7 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
                     >
                       <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
                     </svg>
-                    Share on X
+                    Compartir en X
                   </a>
                   <a
                     href={linkedInUrl}
@@ -187,7 +187,7 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
                       <rect x="2" y="9" width="4" height="12" />
                       <circle cx="4" cy="4" r="2" />
                     </svg>
-                    Share on LinkedIn
+                    Compartir en LinkedIn
                   </a>
                 </div>
               </div>
@@ -197,13 +197,13 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
 
         {
           siteConfig.blog.showRelatedPosts && (newer || older) && (
-            <nav class="post-nav" aria-label="More posts">
+            <nav class="post-nav" aria-label="Más entradas">
               {older ? (
                 <GlassCard
                   href={withBase(`/blog/${older.id}/`)}
                   class="post-nav__card"
                 >
-                  <span class="post-nav__dir">← Older</span>
+                  <span class="post-nav__dir">← Anterior</span>
                   <span class="post-nav__title">{older.data.title}</span>
                 </GlassCard>
               ) : (
@@ -214,7 +214,7 @@ const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
                   href={withBase(`/blog/${newer.id}/`)}
                   class="post-nav__card post-nav__card--next"
                 >
-                  <span class="post-nav__dir">Newer →</span>
+                  <span class="post-nav__dir">Siguiente →</span>
                   <span class="post-nav__title">{newer.data.title}</span>
                 </GlassCard>
               ) : (

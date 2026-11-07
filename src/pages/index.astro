@@ -97,6 +97,96 @@ import Footer from '@/components/common/Footer.astro';
         /><span>MODELO ENTIDAD–RELACIÓN · CINEANDES ↗</span></a
       >
     </section>
+    <section class="blueprint" aria-labelledby="blueprint-title">
+      <div class="blueprint-heading">
+        <div>
+          <p class="eyebrow">DE LA IDEA A LA CONSULTA</p><h2
+            id="blueprint-title"
+          >
+            Una misma información,<br /><span>tres formas de verla.</span>
+          </h2>
+        </div>
+        <p>
+          Un ejemplo sencillo de cómo un problema se convierte en un diseño que
+          luego se puede consultar.
+        </p>
+      </div>
+      <div class="blueprint-grid">
+        <article>
+          <span class="blueprint-number">01</span><p class="eyebrow">
+            MODELO CONCEPTUAL
+          </p><h3>La pregunta</h3><p>
+            Una sede tiene salas. Antes de crear tablas, se identifican las
+            entidades y la relación que existe entre ellas.
+          </p><div class="diagram">
+            <span>SEDE</span><b>1 ───── N</b><span>SALA</span>
+          </div>
+        </article>
+        <article>
+          <span class="blueprint-number">02</span><p class="eyebrow">
+            MODELO RELACIONAL
+          </p><h3>La estructura</h3><p>
+            Las entidades se representan en tablas. Una sala puede identificarse
+            por el código de sede y su número.
+          </p><div class="schema">
+            <strong>SALA</strong><span>codigo_sede · numero_sala</span><small
+              >CLAVE COMPUESTA</small>
+          </div>
+        </article>
+        <article>
+          <span class="blueprint-number">03</span><p class="eyebrow">SQL</p><h3>
+            La consulta
+          </h3><p>
+            Con una consulta podemos pedir las salas de una sede. Los nombres
+            son un ejemplo ilustrativo.
+          </p><pre><code>SELECT numero_sala
+FROM sala
+WHERE codigo_sede = 1;</code></pre>
+        </article>
+      </div>
+      <a class="text-link" href="/blog/tres-niveles/"
+        >Conocer los niveles de diseño →</a
+      >
+    </section>
+    <section class="glossary" aria-labelledby="glossary-title">
+      <div class="glossary-intro">
+        <p class="eyebrow">CONCEPTOS PARA TENER PRESENTES</p><h2
+          id="glossary-title"
+        >
+          Las piezas<br /><span>del modelo.</span>
+        </h2><p>
+          Un pequeño glosario para ubicarse entre diagramas, tablas y consultas.
+        </p><a class="text-link" href="/blog/">Ir a todos los apuntes →</a>
+      </div>
+      <div class="glossary-items">
+        <a href="/blog/modelo-entidad-relacion/"
+          ><span>01</span><div>
+            <h3>Entidad</h3><p>
+              Algo que queremos identificar y describir, como una sede o una
+              película.
+            </p>
+          </div><b>↗</b></a
+        ><a href="/blog/modelo-relacional/"
+          ><span>02</span><div>
+            <h3>Clave</h3><p>
+              Uno o varios atributos que ayudan a identificar o relacionar
+              registros.
+            </p>
+          </div><b>↗</b></a
+        ><a href="/blog/dependencias-funcionales/"
+          ><span>03</span><div>
+            <h3>Dependencia funcional</h3><p>
+              Una regla que indica cuándo ciertos atributos determinan a otros.
+            </p>
+          </div><b>↗</b></a
+        ><a href="/blog/sql-joins/"
+          ><span>04</span><div>
+            <h3>Join</h3><p>
+              Una operación para combinar información de tablas relacionadas.
+            </p>
+          </div><b>↗</b></a>
+      </div>
+    </section>
     <section class="paths">
       <div class="heading">
         <p class="eyebrow">EXPLORA EL PORTAFOLIO</p><h2>
@@ -471,6 +561,171 @@ import Footer from '@/components/common/Footer.astro';
     }
     .closing {
       padding-bottom: 5rem;
+    }
+  }
+
+  .blueprint {
+    padding: 6rem 0;
+    border-top: 1px solid var(--glass-border);
+  }
+  .blueprint-heading {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: end;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+  }
+  .blueprint-heading h2,
+  .glossary-intro h2 {
+    font-size: clamp(2.6rem, 4.5vw, 4.5rem);
+    letter-spacing: -0.055em;
+    line-height: 1.03;
+    margin: 1rem 0;
+  }
+  .blueprint-heading h2 span,
+  .glossary-intro h2 span {
+    color: var(--color-accent);
+  }
+  .blueprint-heading > p,
+  .glossary-intro > p:not(.eyebrow) {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+  .blueprint-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .blueprint-grid article {
+    position: relative;
+    min-height: 370px;
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    padding: 1.7rem;
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
+    display: flex;
+    flex-direction: column;
+  }
+  .blueprint-grid h3 {
+    font-size: 1.6rem;
+    letter-spacing: -0.04em;
+    margin: 0.6rem 0;
+  }
+  .blueprint-grid article > p:not(.eyebrow) {
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+  .blueprint-number {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.1rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: color-mix(in srgb, var(--color-text) 10%, transparent);
+  }
+  .diagram,
+  .schema,
+  .blueprint pre {
+    margin: auto 0 0;
+    border: 1px solid var(--glass-border);
+    border-radius: 0.8rem;
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    padding: 1rem;
+  }
+  .diagram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+  .diagram span {
+    border: 1px solid var(--color-accent);
+    padding: 0.5rem;
+  }
+  .diagram b {
+    color: var(--color-accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .schema strong,
+  .schema span,
+  .schema small {
+    display: block;
+  }
+  .schema span {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    margin: 0.45rem 0;
+    overflow-wrap: anywhere;
+  }
+  .schema small {
+    color: var(--color-accent);
+    font-weight: 800;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+  .blueprint pre {
+    white-space: pre-wrap;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    overflow: auto;
+  }
+  .text-link {
+    display: inline-block;
+    color: var(--color-accent-text);
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 1.5rem;
+  }
+  .glossary {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 5rem;
+    padding: 6rem 0;
+    border-top: 1px solid var(--glass-border);
+  }
+  .glossary-items {
+    border-top: 1px solid var(--glass-border);
+  }
+  .glossary-items a {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    gap: 1rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    text-decoration: none;
+  }
+  .glossary-items a > span,
+  .glossary-items a > b {
+    color: var(--color-accent-text);
+    font-weight: 800;
+  }
+  .glossary-items h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.3rem;
+  }
+  .glossary-items p {
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+  @media (max-width: 850px) {
+    .blueprint-heading,
+    .glossary {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .blueprint-grid {
+      grid-template-columns: 1fr;
+    }
+    .blueprint-grid article {
+      min-height: 280px;
+    }
+    .glossary {
+      padding: 4rem 0;
     }
   }
 </style>
