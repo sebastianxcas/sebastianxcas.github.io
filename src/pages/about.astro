@@ -20,7 +20,8 @@ import siteConfig from '@/site.config';
           recorrido por Bases de Datos 1.
         </p><div class="intro-actions">
           <a class="primary" href="#video">Ver mi presentación ↓</a><a
-            href="/work/">Explorar evidencias ↗</a>
+            href="/work/">Explorar evidencias ↗</a
+          >
         </div><div class="intro-meta">
           <span>INGENIERÍA DE SISTEMAS</span><span>UNIVERSIDAD EL BOSQUE</span>
         </div>
@@ -33,7 +34,8 @@ import siteConfig from '@/site.config';
             class="portrait-label"
           >
             <span>SEBASTIÁN CASTELLANOS</span><strong
-              >Aprender, construir<br />y seguir mejorando.</strong>
+              >Aprender, construir<br />y seguir mejorando.</strong
+            >
           </div>
         </div><div class="portrait-bottom">
           <span>ESTUDIANTE · INGENIERÍA DE SISTEMAS</span><b>✦</b>
@@ -62,13 +64,16 @@ import siteConfig from '@/site.config';
       </div><div class="interests">
         <div>
           <span>01 / INTERESES</span><strong>Videojuegos</strong><small
-            >Valorant y tiempo para jugar</small>
+            >Valorant y tiempo para jugar</small
+          >
         </div><div>
           <span>02 / INTERESES</span><strong>Música</strong><small
-            >Sin un solo género favorito</small>
+            >Sin un solo género favorito</small
+          >
         </div><div>
           <span>03 / FORMACIÓN</span><strong>Ingeniería</strong><small
-            >Aprender, analizar y crear</small>
+            >Aprender, analizar y crear</small
+          >
         </div>
       </div>
     </section>
@@ -85,7 +90,8 @@ import siteConfig from '@/site.config';
       </div><div class="video-card">
         <div class="video-top">
           <span>VIDEO DE PRESENTACIÓN</span><span
-            >BASES DE DATOS 1 · UNIVERSIDAD EL BOSQUE</span>
+            >BASES DE DATOS 1 · UNIVERSIDAD EL BOSQUE</span
+          >
         </div><div class="video-frame">
           <iframe
             src="https://www.youtube.com/embed/Srzb67kSNsI"
@@ -97,7 +103,8 @@ import siteConfig from '@/site.config';
           <span>SEBASTIÁN CASTELLANOS PARRA</span><a
             href="https://www.youtube.com/watch?v=Srzb67kSNsI"
             target="_blank"
-            rel="noopener noreferrer">Abrir en YouTube ↗</a>
+            rel="noopener noreferrer">Abrir en YouTube ↗</a
+          >
         </div>
       </div>
     </section>
@@ -122,6 +129,57 @@ import siteConfig from '@/site.config';
           mis conocimientos.”
         </blockquote><small>SEBASTIÁN · BASES DE DATOS 1</small>
       </aside>
+    </section>
+    <section class="learning-story">
+      <div class="learning-heading">
+        <div>
+          <p class="eyebrow">04 / LO QUE ME LLEVO</p><h2>
+            Aprender también es <span>volver a mirar.</span>
+          </h2>
+        </div><p>
+          El recorrido por Bases de Datos 1 reúne ideas distintas que se
+          conectan cuando aparece un problema concreto.
+        </p>
+      </div><div class="learning-grid">
+        <article>
+          <span>01 / COMPRENDER</span><h3>Empezar por el problema</h3><p>
+            Antes de dibujar tablas o escribir consultas, es necesario
+            preguntarse qué información se necesita, quién la usa y qué reglas
+            debe cumplir.
+          </p><a href="/blog/modelo-entidad-relacion/"
+            >Explorar el modelo entidad–relación →</a>
+        </article><article>
+          <span>02 / ORGANIZAR</span><h3>Tomar decisiones de diseño</h3><p>
+            Identificar claves y relaciones, revisar dependencias y normalizar
+            ayuda a construir una estructura que represente mejor esas reglas.
+          </p><a href="/work/#normalizacion"
+            >Ver el taller de normalización →</a>
+        </article><article>
+          <span>03 / APLICAR</span><h3>Conectar las ideas</h3><p>
+            En SIGEVET, el modelo de una red veterinaria se relaciona con
+            tablas, consultas y una aplicación web. El proyecto reúne varios
+            temas del curso.
+          </p><a href="/work/#sigevet">Conocer SIGEVET →</a>
+        </article>
+      </div>
+    </section>
+    <section class="reflection">
+      <div>
+        <p class="eyebrow">MIRAR HACIA ADELANTE</p><h2>
+          Un punto de partida, <span>no el final.</span>
+        </h2>
+      </div><div class="reflection-copy">
+        <p>
+          La ingeniería implica seguir aprendiendo: entender un concepto,
+          ponerlo a prueba y estar dispuesto a corregir una decisión cuando
+          aparece nueva información. Este portafolio reúne una parte de ese
+          proceso.
+        </p><p>
+          Los modelos y consultas son herramientas para pensar con claridad. Mi
+          objetivo es seguir reforzando esas bases y aplicarlas en los proyectos
+          que encuentre durante la carrera.
+        </p><a href="/work/">Recorrer las evidencias →</a>
+      </div>
     </section>
     <section class="continue">
       <div>
@@ -510,6 +568,105 @@ import siteConfig from '@/site.config';
     .video-top span:last-child,
     .video-bottom span {
       display: none;
+    }
+  }
+
+  .learning-story {
+    padding: 7rem 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .learning-heading {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+  .learning-heading h2,
+  .reflection h2 {
+    font-size: clamp(2.7rem, 5vw, 4.5rem);
+    letter-spacing: -0.055em;
+    line-height: 1.02;
+    margin: 1rem 0;
+  }
+  .learning-heading h2 span,
+  .reflection h2 span {
+    color: var(--color-accent);
+  }
+  .learning-heading > p,
+  .reflection-copy p {
+    color: var(--color-text-muted);
+    line-height: 1.75;
+  }
+  .learning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .learning-grid article {
+    display: flex;
+    flex-direction: column;
+    min-height: 290px;
+    border: 1px solid var(--glass-border);
+    border-radius: 1.2rem;
+    padding: 1.7rem;
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
+  }
+  .learning-grid article:nth-child(2) {
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--color-accent) 10%, var(--color-surface)),
+      var(--color-surface)
+    );
+  }
+  .learning-grid span {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: var(--color-accent-text);
+  }
+  .learning-grid h3 {
+    font-size: 1.5rem;
+    letter-spacing: -0.04em;
+    margin: 1.3rem 0 0.5rem;
+  }
+  .learning-grid p {
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+  .learning-grid a,
+  .reflection-copy a {
+    color: var(--color-accent-text);
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: auto;
+  }
+  .reflection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    padding: 7rem 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .reflection-copy a {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+  @media (max-width: 850px) {
+    .learning-heading,
+    .reflection {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .learning-grid {
+      grid-template-columns: 1fr;
+    }
+    .learning-grid article {
+      min-height: 0;
+    }
+    .learning-story,
+    .reflection {
+      padding: 5rem 0;
     }
   }
 </style>

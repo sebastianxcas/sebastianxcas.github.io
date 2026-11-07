@@ -90,7 +90,8 @@ const sqlResources = [
           ><span>02</span><strong>Normalización</strong><b>↗</b></a
         ><a href="#sql"><span>03</span><strong>SQL</strong><b>↗</b></a><a
           href="#proyecto"
-          ><span>04</span><strong>Proyecto final y parcial</strong><b>↗</b></a>
+          ><span>04</span><strong>Proyecto final y parcial</strong><b>↗</b></a
+        >
       </nav>
     </header>
     <div class="evidence-ribbon">
@@ -98,6 +99,63 @@ const sqlResources = [
         >CONSULTAR</span
       ><i>✦</i><span>APLICAR</span>
     </div>
+
+    <section class="evidence-highlights" aria-labelledby="highlights-title">
+      <div class="highlights-heading">
+        <div>
+          <p class="kicker">UN VISTAZO AL SEMESTRE</p><h2 id="highlights-title">
+            Tres momentos, <em>un recorrido.</em>
+          </h2>
+        </div><p>
+          Del ejercicio de clase al trabajo en equipo: selecciona una evidencia
+          para conocer su contexto.
+        </p>
+      </div><div class="highlights-grid">
+        <a class="highlight highlight--project" href="#sigevet"
+          ><div class="highlight-meta">
+            <span>01 / PROYECTO FINAL</span><b>↗</b>
+          </div><div class="highlight-image">
+            <img
+              src="/vistas/sigevet-modelo-relacional.png"
+              alt="Vista del modelo relacional del proyecto SIGEVET"
+              loading="lazy"
+            />
+          </div><div class="highlight-copy">
+            <small>MODELO · BASE DE DATOS · APLICACIÓN</small><h3>SIGEVET</h3><p
+            >
+              Un proyecto de gestión veterinaria desarrollado en equipo.
+            </p>
+          </div></a
+        ><a class="highlight highlight--exam" href="#cineandes"
+          ><div class="highlight-meta">
+            <span>02 / PARCIAL</span><b>↗</b>
+          </div><div class="highlight-image">
+            <img
+              src="/vistas/modelo-cineandes.png"
+              alt="Vista del modelo entidad relación CineAndes"
+              loading="lazy"
+            />
+          </div><div class="highlight-copy">
+            <small>ENTIDADES · RELACIONES · CLAVES</small><h3>CineAndes</h3><p>
+              El modelo entidad–relación de una cadena de cine.
+            </p>
+          </div></a
+        ><a class="highlight highlight--norm" href="#normalizacion"
+          ><div class="highlight-meta">
+            <span>03 / TALLER</span><b>↗</b>
+          </div><div class="highlight-image">
+            <img
+              src="/vistas/normalizacion-taller-3.png"
+              alt="Vista del resumen del taller de normalización"
+              loading="lazy"
+            />
+          </div><div class="highlight-copy">
+            <small>DEPENDENCIAS · FORMAS NORMALES</small><h3>
+              Normalización
+            </h3><p>Dos esquemas analizados paso a paso.</p>
+          </div></a>
+      </div>
+    </section>
 
     <section class="section" id="modelado">
       <div class="section-header">
@@ -108,94 +166,96 @@ const sqlResources = [
           </p>
         </div>
       </div>
-      <article class="case case--class">
-        <div class="case-heading">
-          <div>
-            <p class="label">EJERCICIO EN CLASE · MODELO ENTIDAD–RELACIÓN</p><h3
+      <div class="model-gallery">
+        <article class="case case--class">
+          <div class="case-heading">
+            <div>
+              <p class="label">
+                EJERCICIO EN CLASE · MODELO ENTIDAD–RELACIÓN
+              </p><h3>Equipos, jugadores y partidos</h3>
+            </div><span class="pill">Diagrama</span>
+          </div>
+          <div class="case-copy">
+            <p>
+              <strong>La actividad.</strong> Este ejercicio de clase representa equipos,
+              jugadores, partidos y la tabla de posiciones mediante entidades, atributos
+              y relaciones.
+            </p><p>
+              <strong>Lo que me deja.</strong> Dibujar el modelo ayuda a distinguir
+              los objetos del problema de las acciones que los relacionan, y a revisar
+              cuáles atributos identifican cada entidad.
+            </p>
+          </div>
+          <figure class="visual">
+            <a
+              href="/archivos/mer-clase.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img
+                src="/archivos/mer-clase.png"
+                alt="Diagrama entidad relación del ejercicio de equipos, jugadores y partidos"
+                loading="lazy"
+              /></a
+            ><figcaption>
+              Ejercicio de clase · pulsa la imagen para ampliarla ↗
+            </figcaption>
+          </figure>
+          <div class="links">
+            <a href="/blog/modelo-entidad-relacion/"
+              >Entender el modelo entidad–relación →</a
+            ><a href="/blog/cardinalidad-participacion/"
+              >Repasar cardinalidad →</a
             >
-              Equipos, jugadores y partidos
-            </h3>
-          </div><span class="pill">Diagrama</span>
-        </div>
-        <div class="case-copy">
-          <p>
-            <strong>La actividad.</strong> Este ejercicio de clase representa equipos,
-            jugadores, partidos y la tabla de posiciones mediante entidades, atributos
-            y relaciones.
-          </p><p>
-            <strong>Lo que me deja.</strong> Dibujar el modelo ayuda a distinguir
-            los objetos del problema de las acciones que los relacionan, y a revisar
-            cuáles atributos identifican cada entidad.
-          </p>
-        </div>
-        <figure class="visual">
-          <a
-            href="/archivos/mer-clase.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><img
-              src="/archivos/mer-clase.png"
-              alt="Diagrama entidad relación del ejercicio de equipos, jugadores y partidos"
-              loading="lazy"
-            /></a
-          ><figcaption>
-            Ejercicio de clase · pulsa la imagen para ampliarla ↗
-          </figcaption>
-        </figure>
-        <div class="links">
-          <a href="/blog/modelo-entidad-relacion/"
-            >Entender el modelo entidad–relación →</a
-          ><a href="/blog/cardinalidad-participacion/">Repasar cardinalidad →</a
-          >
-        </div>
-      </article>
-      <article class="case" id="biblioteca">
-        <div class="case-heading">
-          <div>
-            <p class="label">REVISIÓN DE UN MODELO · BIBLIOTECA</p><h3>
-              Libros y relaciones
-            </h3>
-          </div><span class="pill">Diagrama</span>
-        </div>
-        <div class="case-copy">
-          <p>
-            <strong>La actividad.</strong> El diagrama relaciona libros, autores,
-            editores, clientes, cesta de compra y almacén. En mis apuntes registré
-            propuestas para revisar las claves y renombrar las relaciones.
-          </p><p>
-            <strong>Lo que me deja.</strong> Una clave debe identificar la entidad
-            de forma adecuada y el nombre de cada relación debe ayudar a leer qué
-            sucede entre sus participantes.
-          </p>
-        </div>
-        <figure class="visual">
-          <a
-            href="/vistas/modelo-biblioteca.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><img
-              src="/vistas/modelo-biblioteca.png"
-              alt="Vista previa del modelo entidad relación de biblioteca"
-              loading="lazy"
-            /></a
-          ><figcaption>
-            Versión conservada del diagrama · pulsa para ampliar ↗
-          </figcaption>
-        </figure>
-        <div class="note">
-          <strong>Sobre esta versión.</strong> El dibujo conserva las claves y nombres
-          originales. Mis apuntes proponen agregar cédula como clave para autor, editor
-          y cliente, y ajustar algunos verbos; esas propuestas no están incorporadas
-          en esta imagen.
-        </div>
-        <div class="links">
-          <a href="/blog/atributos-mer/">Repasar atributos y claves →</a><a
-            href="/vistas/modelo-biblioteca.png">Abrir imagen PNG ↗</a
-          ><a href="/archivos/modelo-biblioteca.drawio"
-            >Archivo editable .drawio ↓</a
-          >
-        </div>
-      </article>
+          </div>
+        </article>
+        <article class="case" id="biblioteca">
+          <div class="case-heading">
+            <div>
+              <p class="label">REVISIÓN DE UN MODELO · BIBLIOTECA</p><h3>
+                Libros y relaciones
+              </h3>
+            </div><span class="pill">Diagrama</span>
+          </div>
+          <div class="case-copy">
+            <p>
+              <strong>La actividad.</strong> El diagrama relaciona libros, autores,
+              editores, clientes, cesta de compra y almacén. En mis apuntes registré
+              propuestas para revisar las claves y renombrar las relaciones.
+            </p><p>
+              <strong>Lo que me deja.</strong> Una clave debe identificar la entidad
+              de forma adecuada y el nombre de cada relación debe ayudar a leer qué
+              sucede entre sus participantes.
+            </p>
+          </div>
+          <figure class="visual">
+            <a
+              href="/vistas/modelo-biblioteca.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img
+                src="/vistas/modelo-biblioteca.png"
+                alt="Vista previa del modelo entidad relación de biblioteca"
+                loading="lazy"
+              /></a
+            ><figcaption>
+              Versión conservada del diagrama · pulsa para ampliar ↗
+            </figcaption>
+          </figure>
+          <div class="note">
+            <strong>Sobre esta versión.</strong> El dibujo conserva las claves y nombres
+            originales. Mis apuntes proponen agregar cédula como clave para autor,
+            editor y cliente, y ajustar algunos verbos; esas propuestas no están incorporadas
+            en esta imagen.
+          </div>
+          <div class="links">
+            <a href="/blog/atributos-mer/">Repasar atributos y claves →</a><a
+              href="/vistas/modelo-biblioteca.png">Abrir imagen PNG ↗</a
+            ><a href="/archivos/modelo-biblioteca.drawio"
+              >Archivo editable .drawio ↓</a
+            >
+          </div>
+        </article>
+      </div>
       <article class="case case--workshop">
         <div class="case-heading">
           <div>
@@ -541,6 +601,22 @@ const sqlResources = [
             la transformación a tablas, la normalización y las consultas. La base
             en MySQL se conecta con una API en Java y una interfaz en Angular.
           </p>
+        </div>
+        <div class="project-path" aria-label="Etapas del proyecto SIGEVET">
+          <div>
+            <span>01 / DISEÑO</span><strong>Entender el caso</strong><p>
+              Entidades, relaciones y reglas de negocio para las clínicas.
+            </p>
+          </div><div>
+            <span>02 / ESTRUCTURA</span><strong>Organizar los datos</strong><p>
+              Tablas relacionadas, claves y normalización en MySQL.
+            </p>
+          </div><div>
+            <span>03 / APLICACIÓN</span><strong>Consultar y gestionar</strong><p
+            >
+              Una API y una interfaz web conectadas a la base de datos.
+            </p>
+          </div>
         </div>
         <figure class="visual">
           <a
@@ -1297,6 +1373,193 @@ const sqlResources = [
     }
     .section {
       padding: 4rem 0;
+    }
+  }
+
+  .evidence-highlights {
+    padding: 6rem 0 2rem;
+  }
+  .highlights-heading {
+    display: grid;
+    grid-template-columns: 1fr 0.65fr;
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: 2rem;
+  }
+  .highlights-heading h2 {
+    font-size: clamp(2.6rem, 4.7vw, 4.2rem);
+    line-height: 1.03;
+    letter-spacing: -0.055em;
+    margin: 0.8rem 0;
+  }
+  .highlights-heading h2 em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+  .highlights-heading > p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr 0.9fr;
+    gap: 1rem;
+  }
+  .highlight {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 1.2rem;
+    color: var(--color-text);
+    text-decoration: none;
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
+    overflow: hidden;
+  }
+  .highlight--project {
+    background: linear-gradient(
+      150deg,
+      color-mix(in srgb, var(--color-accent) 16%, var(--color-surface)),
+      var(--color-surface)
+    );
+  }
+  .highlight-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.2rem 0.2rem 0.85rem;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+  .highlight-meta b {
+    color: var(--color-accent-text);
+  }
+  .highlight-image {
+    background: #fff;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .highlight-image img {
+    display: block;
+    width: 100%;
+    height: 205px;
+    object-fit: contain;
+  }
+  .highlight-copy {
+    padding: 1rem 0.2rem 0.3rem;
+  }
+  .highlight-copy small,
+  .project-path span {
+    font-size: 0.61rem;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-text);
+    font-weight: 800;
+  }
+  .highlight-copy h3 {
+    font-size: 1.65rem;
+    letter-spacing: -0.04em;
+    margin: 0.4rem 0;
+  }
+  .highlight-copy p {
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .model-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.3rem;
+  }
+  .model-gallery .case {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .model-gallery .case-copy {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .model-gallery .visual {
+    margin-top: auto;
+  }
+  .model-gallery .visual img {
+    height: 330px;
+    object-fit: contain;
+  }
+  .model-gallery .note {
+    font-size: 0.9rem;
+  }
+  .project-path {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  }
+  .project-path strong {
+    display: block;
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  .project-path p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .highlight {
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+    .highlight:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(24, 10, 40, 0.14);
+    }
+  }
+  @media (max-width: 900px) {
+    .highlights-heading {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .highlights-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .highlight--project {
+      grid-column: 1/-1;
+    }
+    .model-gallery {
+      grid-template-columns: 1fr;
+    }
+    .model-gallery .visual img {
+      height: auto;
+      max-height: 520px;
+    }
+  }
+  @media (max-width: 600px) {
+    .evidence-highlights {
+      padding: 4rem 0 1rem;
+    }
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+    .highlight--project {
+      grid-column: auto;
+    }
+    .highlight-image img {
+      height: 190px;
+    }
+    .project-path {
+      grid-template-columns: 1fr;
     }
   }
 </style>
