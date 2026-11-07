@@ -26,7 +26,7 @@ export default defineConfig({
   trailingSlash: 'always',
   build: {
     format: 'directory',
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
   vite: {
     build: {
@@ -49,3 +49,4 @@ export default defineConfig({
     enabled: true,
   },
 });
+
