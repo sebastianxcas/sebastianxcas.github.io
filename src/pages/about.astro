@@ -5,10 +5,8 @@ import Footer from '@/components/common/Footer.astro';
 import GlassPanel from '@/components/common/GlassPanel.astro';
 import Button from '@/components/ui/Button.astro';
 import Container from '@/components/ui/Container.astro';
-import GlassCard from '@/components/ui/GlassCard.astro';
 import Section from '@/components/ui/Section.astro';
 import siteConfig from '@/site.config';
-import { withBase } from '@/lib/url';
 ---
 
 <BaseLayout
@@ -18,7 +16,6 @@ import { withBase } from '@/lib/url';
   <Header />
 
   <main id="main" tabindex="-1">
-
     <!-- ===== SECCIÓN HERO (PRESENTACIÓN PRINCIPAL) ===== -->
     <section class="about-hero">
       <Container size="xl">
@@ -38,10 +35,7 @@ import { withBase } from '@/lib/url';
             <!-- Columna 1: Foto -->
             <div class="about-hero__photo-col">
               <div class="about-photo">
-                <img
-                  src="/sebastian.jpeg"
-                  alt="Sebastián Castellanos"
-                />
+                <img src="/sebastian.jpeg" alt="Sebastián Castellanos" />
               </div>
             </div>
 
@@ -55,10 +49,9 @@ import { withBase } from '@/lib/url';
                   e-portafolio para la asignatura Bases de Datos 1.
                 </p>
                 <p>
-                  En mi tiempo libre me gusta jugar videojuegos,
-                  especialmente Valorant, y escuchar música. No tengo un
-                  género musical específico; simplemente disfruto escuchar
-                  música que me guste.
+                  En mi tiempo libre me gusta jugar videojuegos, especialmente
+                  Valorant, y escuchar música. No tengo un género musical
+                  específico; simplemente disfruto escuchar música que me guste.
                 </p>
               </div>
             </div>
@@ -91,13 +84,15 @@ import { withBase } from '@/lib/url';
     >
       <div class="about-hero__statement">
         <p>
-          Considero que es fundamental para mi vida profesional porque me enseña el lenguaje universal de los negocios: los datos.
-          No solo voy a aprender a usar un motor de base de datos, sino a diseñar estructuras lógicas y eficientes que eviten redundancias y errores.
+          Considero que es fundamental para mi vida profesional porque me enseña
+          el lenguaje universal de los negocios: los datos. No solo voy a
+          aprender a usar un motor de base de datos, sino a diseñar estructuras
+          lógicas y eficientes que eviten redundancias y errores.
         </p>
         <p>
-          Los conocimientos adquiridos en Bases de Datos 1 podrán ayudarme
-          en los proyectos que desarrolle durante mi carrera y posteriormente
-          en mi vida profesional.
+          Los conocimientos adquiridos en Bases de Datos 1 podrán ayudarme en
+          los proyectos que desarrolle durante mi carrera y posteriormente en mi
+          vida profesional.
         </p>
       </div>
     </Section>
@@ -110,11 +105,7 @@ import { withBase } from '@/lib/url';
       align="left"
       container="xl"
     >
-      <GlassPanel
-        variant="solid"
-        padding="lg"
-        radius="xl"
-      >
+      <GlassPanel variant="solid" padding="lg" radius="xl">
         <div style="aspect-ratio: 16 / 9;">
           <iframe
             src="https://www.youtube.com/embed/Srzb67kSNsI"
@@ -126,35 +117,30 @@ import { withBase } from '@/lib/url';
               border-radius: 1rem;
             "
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
+            allowfullscreen></iframe>
         </div>
       </GlassPanel>
     </Section>
 
-    <!-- ===== SECCIÓN: MER (MODELO ENTIDAD-RELACIÓN) ===== -->
-<Section
-  eyebrow="Bases de Datos 1"
-  title="Modelo Entidad-Relación"
-  subtitle="Ejercicio realizado en clase"
-  align="left"
-  container="xl"
->
-  <GlassPanel
-    variant="solid"
-    padding="lg"
-    radius="xl"
-  >
-    <!-- Contenedor con fondo blanco para la imagen -->
-    <div class="mer-container">
-      <img
-        src="/MER ejercicio en clase (1).png"
-        alt="Modelo Entidad-Relación - Ejercicio en clase"
-        class="mer-image"
-      />
-    </div>
-  </GlassPanel>
-</Section>
+    <Section
+      eyebrow="Sobre este espacio"
+      title="Un portafolio para aprender."
+      subtitle="Una forma de reunir los temas y el trabajo de Bases de Datos 1."
+      align="left"
+      container="xl"
+    >
+      <div class="about-hero__statement">
+        <p>
+          En Evidencias están los diagramas y talleres del curso, junto con el
+          contexto de las actividades. En el Blog reuní apuntes y ejemplos para
+          repasar las ideas principales.
+        </p>
+        <p>
+          Me interesa seguir mejorando mi forma de analizar problemas y entender
+          cómo organizar la información para usarla en proyectos de ingeniería.
+        </p>
+      </div>
+    </Section>
 
     <!-- ===== SECCIÓN: OBJETIVO ===== -->
     <section class="principle">
@@ -167,14 +153,12 @@ import { withBase } from '@/lib/url';
         <div class="principle__note">
           <span class="principle__mark" aria-hidden="true">✦</span>
           <p>
-            Quiero aprovechar cada actividad, proyecto y evidencia para
-            mejorar mis conocimientos en bases de datos y llevarlos a la
-            práctica.
+            Quiero aprovechar cada actividad, proyecto y evidencia para mejorar
+            mis conocimientos en bases de datos y llevarlos a la práctica.
           </p>
         </div>
       </Container>
     </section>
-
   </main>
 
   <Footer />
@@ -406,20 +390,20 @@ import { withBase } from '@/lib/url';
   }
 
   /* ===== SECCIÓN MER ===== */
-.mer-container {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
+  .mer-container {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
-.mer-image {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
+  .mer-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
 </style>

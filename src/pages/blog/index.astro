@@ -2,153 +2,187 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
-import GlassPanel from '@/components/common/GlassPanel.astro';
-import Container from '@/components/ui/Container.astro';
 import PostGrid from '@/components/blog/PostGrid.astro';
-import Pagination from '@/components/blog/Pagination.astro';
-import { getPublishedPosts, splitFeatured } from '@/lib/posts';
-import siteConfig from '@/site.config';
+import { getPublishedPosts } from '@/lib/posts';
 
 const allPosts = await getPublishedPosts();
-const perPage = siteConfig.blog.postsPerPage;
-
-// Featured posts are pulled out of the pool before pagination, and
-// page/[page].astro does the same split, so a featured post never
-// reappears in a paginated grid regardless of where it falls in the
-// full, date-sorted list.
-const { featured, rest } = splitFeatured(allPosts);
-const totalPages = Math.max(1, Math.ceil(rest.length / perPage));
-const pagePosts = rest.slice(0, perPage);
+const sections = [
+  {
+    id: 'fundamentos',
+    label: '01 / Fundamentos',
+    title: 'Entender los datos',
+    description: 'Bases de datos, gestores y niveles de diseño.',
+    tags: ['Fundamentos'],
+  },
+  {
+    id: 'modelado',
+    label: '02 / Modelado',
+    title: 'Representar el problema',
+    description: 'Entidades, relaciones, cardinalidad y transformación.',
+    tags: ['Modelado', 'Modelo relacional'],
+  },
+  {
+    id: 'relacional',
+    label: '03 / Modelo relacional',
+    title: 'Organizar y razonar',
+    description: 'Claves, dependencias, normalización y álgebra relacional.',
+    tags: ['Relacional', 'Normalización'],
+  },
+  {
+    id: 'sql',
+    label: '04 / SQL',
+    title: 'Consultar la información',
+    description: 'Consultas, funciones, agrupaciones y combinaciones.',
+    tags: ['SQL'],
+  },
+];
+const assigned = new Set<string>();
+const groups = sections.map((section) => {
+  const posts = allPosts.filter((post) => {
+    if (assigned.has(post.id)) return false;
+    if (!post.data.tags.some((tag) => section.tags.includes(tag))) return false;
+    assigned.add(post.id);
+    return true;
+  });
+  return { ...section, posts };
+});
 ---
 
-<BaseLayout
-  title="Blog"
-  description="Apuntes y reflexiones de Bases de Datos 1"
->
-  <Header />
-
-  <main id="main" tabindex="-1" class="main-content">
-    <section class="blog-hero">
-      <Container>
-        <GlassPanel variant="solid" padding="xl" className="hero-content">
-          <h1 class="hero-title">Blog</h1>
-          <p class="hero-description">
-            Apuntes y reflexiones sobre los conceptos y ejercicios de Bases de
-            Datos 1.
-          </p>
-        </GlassPanel>
-      </Container>
-    </section>
-
-    {
-      featured.length > 0 && (
-        <section class="section">
-          <Container>
-            <h2 class="section-title">Destacados</h2>
-            <PostGrid posts={featured} columns="two" />
-          </Container>
-        </section>
-      )
-    }
-
-    <section class="section">
-      <Container>
-        <h2 class="section-title">
-          {featured.length > 0 ? 'Últimas entradas' : 'Todas las entradas'}
-        </h2>
-
+<BaseLayout title="Blog" description="Apuntes de estudio de Bases de Datos 1."
+  ><Header />
+  <main id="main" tabindex="-1" class="journal">
+    <header class="journal-hero">
+      <p class="eyebrow">BASES DE DATOS 1 · CUADERNO DE ESTUDIO</p><h1>
+        Ideas para <span>conectar los datos.</span>
+      </h1><p>
+        Conceptos, ejemplos y apuntes organizados para repasar los temas del
+        curso.
+      </p><nav aria-label="Temas del blog">
         {
-          allPosts.length === 0 ? (
-            <GlassPanel variant="default" padding="xl" className="empty-state">
-              <p>Todavía no hay entradas publicadas.</p>
-            </GlassPanel>
-          ) : (
-            <>
-              <PostGrid posts={pagePosts} />
-              <Pagination
-                currentPage={1}
-                totalPages={totalPages}
-                basePath="/blog"
-              />
-            </>
-          )
+          groups.map((g) => (
+            <a href={'#' + g.id}>{g.label.split(' / ')[1]} ↓</a>
+          ))
         }
-      </Container>
-    </section>
-  </main>
-
-  <Footer />
+      </nav>
+    </header>
+    {
+      groups.map((g) => (
+        <section class="journal-section" id={g.id}>
+          <>
+            <div class="section-heading">
+              <>
+                <div>
+                  <>
+                    <p class="eyebrow">{g.label}</p>
+                    <h2>{g.title}</h2>
+                    <p>{g.description}</p>
+                  </>
+                </div>
+                <span>{g.posts.length} entradas</span>
+              </>
+            </div>
+            <PostGrid posts={g.posts} />
+          </>
+        </section>
+      ))
+    }
+    <div class="endnote">
+      <p>
+        Los ejemplos de las entradas son ilustrativos. Las actividades y
+        archivos del semestre están reunidos por separado.
+      </p><a href="/work/">Explorar evidencias →</a>
+    </div>
+  </main><Footer />
 </BaseLayout>
-
 <style>
-  .main-content {
-    min-height: 100vh; /* fallback */
-    min-height: 100dvh;
+  .journal {
+    width: min(1200px, calc(100% - 2.5rem));
+    margin: auto;
   }
-
-  .section {
-    padding: var(--space-3xl) 0;
+  .journal-hero {
+    padding: clamp(5rem, 10vw, 9rem) 0 5rem;
+    max-width: 1000px;
   }
-
-  .blog-hero {
-    padding-top: var(--space-2xl);
-    padding-bottom: var(--space-2xl);
-  }
-
-  .hero-content {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .hero-title {
-    font-size: var(--text-5xl);
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.13em;
+    color: var(--color-accent);
     font-weight: 800;
-    margin-bottom: var(--space-md);
-    background: linear-gradient(
-      135deg,
-      var(--color-accent),
-      var(--color-accent-light)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
   }
-
-  .hero-description {
-    font-size: var(--text-lg);
+  .journal-hero h1 {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.97;
+    letter-spacing: -0.065em;
+    margin: 1.6rem 0;
+  }
+  .journal-hero h1 span {
+    color: var(--color-accent);
+  }
+  .journal-hero > p:not(.eyebrow) {
+    font-size: 1.2rem;
     color: var(--color-text-muted);
     line-height: 1.6;
+    max-width: 650px;
   }
-
-  .section-title {
-    font-size: var(--text-3xl);
+  .journal-hero nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+  .journal-hero nav a {
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    padding: 0.65rem 1rem;
+    text-decoration: none;
+    font-size: 0.85rem;
     font-weight: 700;
-    margin-bottom: var(--space-2xl);
-    text-align: center;
   }
-
-  .empty-state {
-    text-align: center;
-    max-width: 500px;
-    margin: 0 auto;
+  .journal-section {
+    scroll-margin-top: 6rem;
+    padding: 4rem 0;
+    border-top: 1px solid var(--glass-border);
   }
-
-  .empty-state p {
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 2rem;
+  }
+  .section-heading h2 {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    letter-spacing: -0.045em;
+    line-height: 1.05;
+    margin: 0.6rem 0;
+  }
+  .section-heading p:not(.eyebrow),
+  .section-heading span,
+  .endnote p {
     color: var(--color-text-muted);
-    font-size: var(--text-lg);
-    margin: 0;
   }
-
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: var(--text-4xl);
+  .section-heading span {
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
+  .endnote {
+    padding: 2rem 0 7rem;
+  }
+  .endnote a {
+    color: var(--color-accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  @media (max-width: 600px) {
+    .section-heading {
+      display: block;
     }
-    .section-title {
-      font-size: var(--text-2xl);
+    .journal-section {
+      padding: 3rem 0;
     }
-    .section {
-      padding: var(--space-2xl) 0;
+    .journal-hero {
+      padding-top: 4rem;
     }
   }
 </style>

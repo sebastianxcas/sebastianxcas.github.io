@@ -7,100 +7,192 @@ import Footer from '@/components/common/Footer.astro';
 <BaseLayout
   title="Inicio"
   description="Portafolio de Sebastián Castellanos para Bases de Datos 1."
->
-  <Header />
+  ><Header />
   <main id="main" tabindex="-1" class="home">
     <section class="hero">
-      <p class="eyebrow">Universidad El Bosque · Ingeniería de Sistemas</p>
-      <h1>Bases de <span>Datos 1</span></h1>
-      <p class="lead">
-        Un recorrido por los conceptos, ejercicios y evidencias que reuní
-        durante el semestre.
-      </p>
-      <p class="signature">E-portafolio de Sebastián Castellanos Parra</p>
-      <div class="actions">
-        <a class="primary" href="/work/">Explorar evidencias ↗</a><a
-          href="/about/">Conocerme →</a>
+      <div class="hero-copy">
+        <p class="eyebrow">Universidad El Bosque · Ingeniería de Sistemas</p><h1
+        >
+          Las ideas también <span>se conectan.</span>
+        </h1><p class="lead">
+          Un espacio para reunir los modelos, ejercicios y aprendizajes de Bases
+          de Datos 1.
+        </p><div class="signature">
+          <span class="signature-mark">SC</span><span
+            ><strong>Sebastián Castellanos Parra</strong><small
+              >E-portafolio académico</small
+            ></span
+          >
+        </div><div class="actions">
+          <a class="primary" href="/work/">Explorar evidencias ↗</a><a
+            href="/about/">Mi presentación →</a
+          >
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div
+          class="node node-main"
+        >
+          <small>BASES DE DATOS 1</small><strong
+            >De los datos<br />a las ideas.</strong
+          ><span>DISEÑAR · ORGANIZAR · CONSULTAR</span>
+        </div><div class="node node-one"><b>01</b><span>MODELAR</span></div><div
+          class="node node-two"
+        >
+          <b>02</b><span>RELACIONAR</span>
+        </div><div class="node node-three"><b>03</b><span>CONSULTAR</span></div>
       </div>
     </section>
-    <section class="explore">
+    <div class="ribbon">
+      <span>ENTIDADES Y RELACIONES</span><i>✦</i><span>MODELO RELACIONAL</span
+      ><i>✦</i><span>NORMALIZACIÓN</span><i>✦</i><span>ÁLGEBRA RELACIONAL</span
+      ><i>✦</i><span>SQL</span>
+    </div>
+    <section class="journey">
       <div class="heading">
         <p class="eyebrow">EL RECORRIDO</p><h2>
-          Del concepto a la práctica.
+          Del concepto<br /><span>a la práctica.</span>
         </h2><p>
-          Apuntes y materiales organizados alrededor de los temas del curso.
+          Los temas del curso forman una secuencia: entender la información,
+          organizarla y aprender a consultarla.
         </p>
-      </div>
-      <div class="cards">
-        <a href="/work/#modelado"
-          ><span>01 / MODELADO</span><h3>Entidades y relaciones</h3><p>
-            Diagramas, claves y transformación al modelo relacional.
-          </p><b>Ver evidencias →</b></a
-        >
-        <a href="/work/#normalizacion"
-          ><span>02 / NORMALIZACIÓN</span><h3>Organizar los datos</h3><p>
-            Dependencias, formas normales y ejercicios desarrollados.
-          </p><b>Ver evidencias →</b></a
-        >
-        <a href="/work/#sql"
-          ><span>03 / SQL</span><h3>Consultar información</h3><p>
-            Material de estudio sobre consultas, funciones y joins.
-          </p><b>Ver materiales →</b></a
-        >
-        <a href="/blog/"
-          ><span>04 / BLOG</span><h3>Apuntes del curso</h3><p>
-            Conceptos y reflexiones para repasar lo aprendido.
-          </p><b>Leer apuntes →</b></a
+      </div><div class="steps">
+        <a href="/blog/#fundamentos"
+          ><span>01 / INTRODUCCIÓN</span><div>
+            <h3>Entender el problema</h3><p>
+              Qué es una base de datos y cómo se representan las entidades y sus
+              relaciones.
+            </p>
+          </div><b>↗</b></a
+        ><a href="/blog/#relacional"
+          ><span>02 / MODELOS DE DATOS</span><div>
+            <h3>Dar estructura a los datos</h3><p>
+              Modelo relacional, dependencias, normalización y álgebra
+              relacional.
+            </p>
+          </div><b>↗</b></a
+        ><a href="/blog/#sql"
+          ><span>03 / SQL</span><div>
+            <h3>Hacer preguntas útiles</h3><p>
+              Selección, filtros, agrupación, joins y subconsultas.
+            </p>
+          </div><b>↗</b></a
         >
       </div>
     </section>
-  </main><Footer />
-</BaseLayout>
+    <section class="featured">
+      <div class="featured-copy">
+        <p class="eyebrow">UNA MIRADA AL TRABAJO</p><h2>
+          Del dibujo a las decisiones.
+        </h2><p>
+          Los modelos permiten pensar cómo se relacionan los datos antes de
+          convertirlos en tablas. En Evidencias se encuentran diagramas,
+          talleres y el contexto de cada actividad.
+        </p><a href="/work/#proyecto">Explorar el modelo CineAndes →</a>
+      </div><a class="featured-image" href="/work/#proyecto"
+        ><img
+          src="/vistas/modelo-cineandes.png"
+          alt="Vista previa del modelo entidad–relación de CineAndes"
+          loading="lazy"
+        /><span>MODELO ENTIDAD–RELACIÓN · CINEANDES ↗</span></a
+      >
+    </section>
+    <section class="paths">
+      <div class="heading">
+        <p class="eyebrow">EXPLORA EL PORTAFOLIO</p><h2>
+          Hay más por descubrir.
+        </h2><p>Dos maneras de recorrer el contenido del semestre.</p>
+      </div><div class="path-grid">
+        <a href="/work/"
+          ><span>01 / EVIDENCIAS</span><h3>Lo que se trabajó.</h3><p>
+            Diagramas, talleres y materiales acompañados de contexto y
+            aprendizajes.
+          </p><b>Ver evidencias →</b></a
+        ><a href="/blog/"
+          ><span>02 / BLOG</span><h3>Lo que vale recordar.</h3><p>
+            Apuntes y ejemplos para repasar los conceptos principales del curso.
+          </p><b>Leer el blog →</b></a
+        >
+      </div>
+    </section>
+    <section class="closing">
+      <p class="eyebrow">BASES DE DATOS 1</p><h2>
+        Aprender también es<br /><span>conectar ideas.</span>
+      </h2><a href="/about/">Conoce mi presentación →</a>
+    </section>
+  </main><Footer /></BaseLayout
+>
 <style>
   .home {
     width: min(1200px, calc(100% - 2.5rem));
     margin: auto;
   }
-  .hero {
-    padding: clamp(5rem, 12vw, 10rem) 0 7rem;
-    max-width: 1000px;
-  }
   .eyebrow {
     color: var(--color-accent);
-    font-size: 0.78rem;
-    font-weight: 700;
+    font-size: 0.75rem;
+    font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
-  .hero h1 {
-    font-size: clamp(4rem, 10vw, 8rem);
-    line-height: 0.95;
-    letter-spacing: -0.065em;
-    margin: 2rem 0;
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 2rem;
+    min-height: min(790px, calc(100vh - 5rem));
+    padding: 5rem 0;
   }
-  .hero h1 span {
+  .hero h1 {
+    font-size: clamp(3.7rem, 7vw, 6.8rem);
+    line-height: 0.96;
+    letter-spacing: -0.065em;
+    margin: 1.5rem 0;
+  }
+  .hero h1 span,
+  .heading h2 span,
+  .closing h2 span {
     color: var(--color-accent);
   }
   .lead {
-    max-width: 700px;
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    line-height: 1.6;
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.65;
     color: var(--color-text-muted);
+    max-width: 560px;
   }
   .signature {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
     margin-top: 2rem;
-    font-weight: 600;
+  }
+  .signature-mark {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--color-accent);
+    font-weight: 800;
+  }
+  .signature strong,
+  .signature small {
+    display: block;
+  }
+  .signature small {
+    color: var(--color-text-muted);
+    margin-top: 0.15rem;
   }
   .actions {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
     flex-wrap: wrap;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
   }
   .actions a {
     border: 1px solid var(--glass-border);
     border-radius: 100px;
-    padding: 0.9rem 1.4rem;
+    padding: 0.85rem 1.2rem;
     text-decoration: none;
     font-weight: 700;
   }
@@ -108,58 +200,277 @@ import Footer from '@/components/common/Footer.astro';
     background: var(--color-accent);
     color: #fff;
   }
-  .explore {
-    padding: 2rem 0 8rem;
+  .hero-art {
+    position: relative;
+    min-height: 480px;
+    display: grid;
+    place-items: center;
   }
-  .heading {
-    max-width: 700px;
-    margin-bottom: 2.5rem;
+  .orbit {
+    position: absolute;
+    width: 83%;
+    aspect-ratio: 1;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+    border-radius: 50%;
   }
-  .heading h2 {
-    font-size: clamp(2.3rem, 5vw, 4rem);
-    letter-spacing: -0.04em;
-    line-height: 1.05;
+  .orbit-b {
+    width: 62%;
+    border-style: dashed;
+    transform: rotate(24deg);
+  }
+  .node {
+    position: absolute;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 65px rgba(0, 0, 0, 0.15);
+    background: color-mix(
+      in srgb,
+      var(--color-surface) 88%,
+      var(--color-accent) 12%
+    );
+    backdrop-filter: blur(16px);
+  }
+  .node-main {
+    position: relative;
+    width: min(78%, 380px);
+    aspect-ratio: 1/1.04;
+    border-radius: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: rotate(-5deg);
+  }
+  .node-main small,
+  .node-main span,
+  .node:not(.node-main) span {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+  }
+  .node-main strong {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
+  .node:not(.node-main) {
+    padding: 0.75rem 1rem;
+    border-radius: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .node:not(.node-main) b {
+    font-size: 1rem;
+  }
+  .node-one {
+    top: 14%;
+    right: 1%;
+  }
+  .node-two {
+    left: 0;
+    top: 73%;
+  }
+  .node-three {
+    right: 2%;
+    bottom: 11%;
+  }
+  .ribbon {
+    display: flex;
+    gap: 1.3rem;
+    align-items: center;
+    overflow: auto;
+    white-space: nowrap;
+    border-block: 1px solid var(--glass-border);
+    padding: 1.15rem 0;
+    color: var(--color-text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+  }
+  .ribbon i {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+  .journey,
+  .paths {
+    padding: 7rem 0;
+  }
+  .journey {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 5rem;
+  }
+  .heading h2,
+  .featured h2,
+  .closing h2 {
+    font-size: clamp(2.6rem, 4.5vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    margin: 1rem 0;
   }
   .heading > p:last-child,
-  .cards p {
+  .featured-copy > p:not(.eyebrow),
+  .path-grid p {
     color: var(--color-text-muted);
+    line-height: 1.7;
   }
-  .cards {
+  .steps {
+    border-top: 1px solid var(--glass-border);
+  }
+  .steps a {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 135px 1fr auto;
+    gap: 1rem;
+    padding: 1.7rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    text-decoration: none;
+  }
+  .steps span,
+  .path-grid span,
+  .featured-image span {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    font-weight: 800;
+  }
+  .steps h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.3rem;
+  }
+  .steps p {
+    margin: 0;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+  .steps b {
+    color: var(--color-accent);
+  }
+  .featured {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
+  }
+  .featured-copy a,
+  .closing a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .featured-image {
+    display: block;
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .featured-image img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+  }
+  .featured-image span {
+    display: block;
+    background: #f5f5f5;
+    color: #574076;
+    padding: 0.9rem 1rem;
+  }
+  .paths .heading {
+    max-width: 680px;
+    margin-bottom: 2rem;
+  }
+  .path-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-  .cards a {
+  .path-grid a {
+    border: 1px solid var(--glass-border);
+    border-radius: 1.3rem;
     padding: 2rem;
     min-height: 240px;
-    border: 1px solid var(--glass-border);
-    border-radius: 1.25rem;
-    background: var(--glass-background, rgba(128, 128, 128, 0.06));
     text-decoration: none;
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
     transition: transform 0.2s;
   }
-  .cards a:hover {
+  .path-grid a:hover {
     transform: translateY(-4px);
   }
-  .cards span {
-    font-size: 0.75rem;
-    color: var(--color-accent);
-    letter-spacing: 0.1em;
+  .path-grid h3 {
+    font-size: 1.8rem;
+    letter-spacing: -0.04em;
+    margin: 1.4rem 0 0.4rem;
   }
-  .cards h3 {
-    font-size: 1.6rem;
-    margin: 1.2rem 0 0.5rem;
-  }
-  .cards b {
+  .path-grid b {
     display: block;
     margin-top: 1.5rem;
+    color: var(--color-accent);
   }
-  @media (max-width: 700px) {
-    .cards {
+  .closing {
+    padding: 2rem 0 8rem;
+    text-align: center;
+  }
+  .closing a {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+  @media (max-width: 850px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding-top: 4rem;
+    }
+    .hero-art {
+      min-height: 400px;
+    }
+    .journey,
+    .featured {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .journey {
+      padding: 5rem 0;
+    }
+    .featured {
+      padding: 1.5rem;
+    }
+    .paths {
+      padding: 5rem 0;
+    }
+  }
+  @media (max-width: 600px) {
+    .hero-art {
+      min-height: 330px;
+    }
+    .node-main {
+      width: 65%;
+      padding: 1.3rem;
+    }
+    .node:not(.node-main) {
+      padding: 0.5rem 0.6rem;
+    }
+    .node:not(.node-main) span {
+      font-size: 0.55rem;
+    }
+    .steps a {
+      grid-template-columns: 1fr auto;
+    }
+    .steps a > span {
+      grid-column: 1/-1;
+    }
+    .path-grid {
       grid-template-columns: 1fr;
     }
-    .hero {
-      padding-bottom: 4rem;
+    .featured-image img {
+      height: 220px;
+    }
+    .closing {
+      padding-bottom: 5rem;
     }
   }
 </style>
