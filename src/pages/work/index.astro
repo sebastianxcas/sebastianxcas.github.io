@@ -2,295 +2,978 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
-const sections = [
+
+const modelResources = [
   {
-    id: 'modelado',
-    number: '01',
-    title: 'Modelado',
-    context:
-      'El diseño comienza identificando entidades, atributos y relaciones. Estos archivos reúnen diagramas y un taller sobre cómo llevar un MER a tablas.',
-    learning:
-      'Al pasar del modelo conceptual al relacional, las claves y las cardinalidades permiten conservar el significado de los datos.',
-    files: [
-      [
-        'Diagrama MER de biblioteca',
-        'modelo-biblioteca.drawio',
-        'Diagrama editable',
-      ],
-      [
-        'Diagrama MER de CineAndes',
-        'modelo-cineandes.drawio',
-        'Diagrama editable',
-      ],
-      ['MER de un ejercicio en clase', 'mer-clase.png', 'Imagen'],
-      [
-        'Taller 1: reglas de transformación',
-        'taller-transformacion.docx',
-        'Trabajo en grupo',
-      ],
-      [
-        'Solución guiada del taller',
-        'solucion-guiada.pdf',
-        'Material de apoyo',
-      ],
-      ['Parcial: enunciado · página 1', 'parcial-1.png', 'Enunciado'],
-      ['Parcial: enunciado · página 2', 'parcial-2.png', 'Enunciado'],
-      ['Parcial: enunciado · página 3', 'parcial-3.png', 'Enunciado'],
-      ['Parcial: enunciado · página 4', 'parcial-4.png', 'Enunciado'],
-      ['Quiz: enunciado · página 1', 'quiz-1.png', 'Enunciado'],
-      ['Quiz: enunciado · página 2', 'quiz-2.png', 'Enunciado'],
-      ['Modelo entidad–relación', 'modelo-er.pptx', 'Diapositivas de clase'],
-      ['Modelo relacional', 'modelo-relacional.pptx', 'Diapositivas de clase'],
-      [
-        'Transformación del MER al MR',
-        'transformacion-mer-mr.pptx',
-        'Diapositivas de clase',
-      ],
-      ['Relaciones ISA', 'relaciones-isa.pptx', 'Diapositivas de clase'],
-    ],
+    name: 'Modelo entidad–relación',
+    file: 'modelo-er',
+    note: 'Entidades, atributos, relaciones y cardinalidad.',
   },
   {
-    id: 'normalizacion',
-    number: '02',
-    title: 'Normalización',
-    context:
-      'En el taller se analizaron los esquemas de hospitalización y de pedidos, con sus dependencias funcionales y descomposiciones.',
-    learning:
-      'Identificar dependencias parciales y transitivas ayuda a reducir redundancias y anomalías de actualización, inserción y eliminación.',
-    files: [
-      [
-        'Normalización paso a paso',
-        'normalizacion-paso-a-paso.xlsx',
-        'Trabajo en grupo',
-      ],
-      [
-        'Preguntas del grupo',
-        'preguntas-normalizacion.docx',
-        'Trabajo en grupo',
-      ],
-      [
-        'Resultados de normalización',
-        'resultados-normalizacion.xlsx',
-        'Ejercicios',
-      ],
-      ['Normalización', 'normalizacion.pptx', 'Diapositivas de clase'],
-    ],
+    name: 'Modelo relacional',
+    file: 'modelo-relacional',
+    note: 'Relaciones, claves y restricciones.',
   },
   {
-    id: 'sql',
-    number: '03',
-    title: 'SQL',
-    context:
-      'El material de clase presenta el lenguaje de consulta desde SELECT hasta agrupaciones y joins.',
-    learning:
-      'Las consultas permiten seleccionar, filtrar, ordenar, agrupar y combinar información de distintas tablas.',
-    files: [
-      [
-        'Ruta de aprendizaje de SQL',
-        'sql-roadmap.pptx',
-        'Diapositivas de clase',
-      ],
-      ['1. Introducción', 'sql-1-introduccion.pptx', 'Diapositivas de clase'],
-      ['2. SELECT', 'sql-2-select.pptx', 'Diapositivas de clase'],
-      [
-        '3. Filtros y ordenamiento',
-        'sql-3-filtros.pptx',
-        'Diapositivas de clase',
-      ],
-      [
-        '4. Funciones de una fila',
-        'sql-4-funciones.pptx',
-        'Diapositivas de clase',
-      ],
-      [
-        '5. Funciones de conversión',
-        'sql-5-conversion.pptx',
-        'Diapositivas de clase',
-      ],
-      [
-        '6. Funciones de grupo',
-        'sql-6-agrupacion.pptx',
-        'Diapositivas de clase',
-      ],
-      ['7. Joins', 'sql-7-joins.pptx', 'Diapositivas de clase'],
-    ],
+    name: 'Transformación del MER al MR',
+    file: 'transformacion-mer-mr',
+    note: 'Reglas para llevar el diseño conceptual a tablas.',
   },
   {
-    id: 'proyecto',
-    number: '04',
-    title: 'Proyecto',
-    context:
-      'Los modelos de biblioteca y CineAndes permiten explorar cómo representar reglas y relaciones en casos concretos.',
-    learning:
-      'Los diagramas sirven para revisar entidades, identificadores y relaciones antes de implementar una base de datos.',
-    files: [
-      ['Modelo de biblioteca', 'modelo-biblioteca.drawio', 'Diagrama editable'],
-      ['Modelo de CineAndes', 'modelo-cineandes.drawio', 'Diagrama editable'],
-    ],
+    name: 'Relaciones ISA',
+    file: 'relaciones-isa',
+    note: 'Especialización, totalidad y exclusividad.',
+  },
+];
+const sqlResources = [
+  {
+    name: 'Ruta de aprendizaje de SQL',
+    file: 'sql-roadmap',
+    note: 'Panorama de los temas del curso.',
+  },
+  {
+    name: '01 · Introducción',
+    file: 'sql-1-introduccion',
+    note: 'Conceptos iniciales de bases de datos y SQL.',
+  },
+  {
+    name: '02 · SELECT',
+    file: 'sql-2-select',
+    note: 'Recuperar columnas y filas de una tabla.',
+  },
+  {
+    name: '03 · Filtros y ordenamiento',
+    file: 'sql-3-filtros',
+    note: 'Restringir y ordenar resultados.',
+  },
+  {
+    name: '04 · Funciones de una fila',
+    file: 'sql-4-funciones',
+    note: 'Trabajar con valores individuales.',
+  },
+  {
+    name: '05 · Funciones de conversión',
+    file: 'sql-5-conversion',
+    note: 'Convertir y manejar tipos de datos.',
+  },
+  {
+    name: '06 · Funciones de grupo',
+    file: 'sql-6-agrupacion',
+    note: 'Resumir y agrupar conjuntos de filas.',
+  },
+  {
+    name: '07 · Joins',
+    file: 'sql-7-joins',
+    note: 'Relacionar información de varias tablas.',
   },
 ];
 ---
 
 <BaseLayout
   title="Evidencias"
-  description="Trabajos, diagramas y materiales de Bases de Datos 1."
-  ><Header /><main id="main" tabindex="-1" class="wrap">
+  description="Ejercicios, diagramas y aprendizajes de Bases de Datos 1."
+>
+  <Header />
+  <main id="main" tabindex="-1" class="portfolio">
     <header class="intro">
-      <p class="eyebrow">BASES DE DATOS 1 · E-PORTAFOLIO</p><h1>
-        Evidencias
-      </h1><p>
-        Actividades, diagramas y materiales organizados por tema. Cada sección
-        reúne su contexto y una idea principal de aprendizaje.
-      </p><nav class="shortcuts" aria-label="Categorías de evidencias">
-        {sections.map((s) => <a href={'#' + s.id}>{s.title} ↓</a>)}
+      <p class="kicker">BASES DE DATOS 1 · E-PORTAFOLIO</p>
+      <h1>El trabajo <em>detrás del aprendizaje.</em></h1>
+      <p class="intro-copy">
+        Un recorrido por los ejercicios, modelos y apuntes del semestre: qué se
+        trabajó, cómo se ve y qué deja cada actividad.
+      </p>
+      <nav class="shortcuts" aria-label="Categorías de evidencias">
+        <a href="#modelado">01 Modelado ↓</a><a href="#normalizacion"
+          >02 Normalización ↓</a
+        ><a href="#sql">03 SQL ↓</a><a href="#proyecto">04 Proyecto ↓</a>
       </nav>
     </header>
-    {
-      sections.map((s) => (
-        <section class="category" id={s.id}>
-          <>
-            <div class="section-heading">
-              <>
-                <span class="number">{s.number} /</span>
-                <div>
+
+    <section class="section" id="modelado">
+      <div class="section-header">
+        <span>01 / MODELADO</span><div>
+          <h2>De una idea a un modelo</h2><p>
+            Representar un problema exige decidir qué información importa y cómo
+            se conecta.
+          </p>
+        </div>
+      </div>
+      <article class="case">
+        <div class="case-heading">
+          <div>
+            <p class="label">EJERCICIO EN CLASE · MODELO ENTIDAD–RELACIÓN</p><h3
+            >
+              Equipos, jugadores y partidos
+            </h3>
+          </div><span class="pill">Diagrama</span>
+        </div>
+        <div class="case-copy">
+          <p>
+            <strong>La actividad.</strong> Este ejercicio de clase representa equipos,
+            jugadores, partidos y la tabla de posiciones mediante entidades, atributos
+            y relaciones.
+          </p><p>
+            <strong>Lo que me deja.</strong> Dibujar el modelo ayuda a distinguir
+            los objetos del problema de las acciones que los relacionan, y a revisar
+            cuáles atributos identifican cada entidad.
+          </p>
+        </div>
+        <figure class="visual">
+          <a
+            href="/archivos/mer-clase.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img
+              src="/archivos/mer-clase.png"
+              alt="Diagrama entidad relación del ejercicio de equipos, jugadores y partidos"
+              loading="lazy"
+            /></a
+          ><figcaption>
+            Ejercicio de clase · pulsa la imagen para ampliarla ↗
+          </figcaption>
+        </figure>
+      </article>
+      <article class="case" id="biblioteca">
+        <div class="case-heading">
+          <div>
+            <p class="label">REVISIÓN DE UN MODELO · BIBLIOTECA</p><h3>
+              Libros y relaciones
+            </h3>
+          </div><span class="pill">Diagrama</span>
+        </div>
+        <div class="case-copy">
+          <p>
+            <strong>La actividad.</strong> El diagrama relaciona libros, autores,
+            editores, clientes, cesta de compra y almacén. En mis apuntes registré
+            propuestas para revisar las claves y renombrar las relaciones.
+          </p><p>
+            <strong>Lo que me deja.</strong> Una clave debe identificar la entidad
+            de forma adecuada y el nombre de cada relación debe ayudar a leer qué
+            sucede entre sus participantes.
+          </p>
+        </div>
+        <figure class="visual">
+          <a
+            href="/vistas/modelo-biblioteca.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img
+              src="/vistas/modelo-biblioteca.png"
+              alt="Vista previa del modelo entidad relación de biblioteca"
+              loading="lazy"
+            /></a
+          ><figcaption>
+            Versión conservada del diagrama · pulsa para ampliar ↗
+          </figcaption>
+        </figure>
+        <div class="note">
+          <strong>Sobre esta versión.</strong> El dibujo conserva las claves y nombres
+          originales. Mis apuntes proponen agregar cédula como clave para autor, editor
+          y cliente, y ajustar algunos verbos; esas propuestas no están incorporadas
+          en esta imagen.
+        </div>
+        <div class="links">
+          <a href="/vistas/modelo-biblioteca.png">Abrir imagen PNG ↗</a><a
+            href="/archivos/modelo-biblioteca.drawio"
+            >Archivo editable .drawio ↓</a
+          >
+        </div>
+      </article>
+      <article class="case">
+        <div class="case-heading">
+          <div>
+            <p class="label">TALLER EN GRUPO · TERMINAL PORTUARIA</p><h3>
+              Transformar el modelo en tablas
+            </h3>
+          </div><span class="pill">Taller 1</span>
+        </div>
+        <div class="case-copy">
+          <p>
+            <strong>La actividad.</strong> Con Juan David Polo y Miguel Ramos desarrollamos
+            un taller de reglas de transformación sobre la terminal portuaria Bahía
+            Verde. Analizamos atributos, relaciones N:M, relaciones ternarias y agregación.
+          </p><p>
+            <strong>Lo que me deja.</strong> La clave de una entidad débil incorpora
+            la identificación de su propietaria. En una relación N:M, los datos que
+            describen la relación pertenecen a la tabla que la representa.
+          </p>
+        </div>
+        <div class="diagram-strip" aria-label="Ejemplo del taller">
+          <div>
+            <small>ATRIBUTO COMPUESTO</small><strong>nombre completo</strong
+            ><span>se descompone en nombres y apellidos</span>
+          </div><div>
+            <small>ATRIBUTO MULTIVALUADO</small><strong>correos</strong><span
+              >se representan por separado</span
+            >
+          </div><div>
+            <small>RELACIÓN N:M</small><strong>embarque</strong><span
+              >reúne las claves y sus propios datos</span
+            >
+          </div>
+        </div>
+        <div class="links">
+          <a href="/archivos/taller-transformacion.docx"
+            >Ver trabajo del grupo ↓</a
+          ><a href="/archivos/solucion-guiada.pdf"
+            >Consultar solución guiada ↗</a
+          ><a href="/blog/transformacion-modelo-relacional/">Leer reflexión →</a
+          >
+        </div>
+      </article>
+      <details class="support">
+        <summary
+          >Ver diapositivas de apoyo de modelado <span>4 presentaciones +</span
+          ></summary
+        ><p>
+          Material de clase para repasar los conceptos; las imágenes son vistas
+          previas de las presentaciones.
+        </p><div class="resources">
+          {
+            modelResources.map((r) => (
+              <article class="resource">
+                <>
+                  <a
+                    class="resource-image"
+                    href={'/vistas/' + r.file + '-1.png'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={'/vistas/' + r.file + '-1.png'}
+                      alt={'Primera diapositiva: ' + r.name}
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="resource-body">
+                    <>
+                      <p class="label">MATERIAL DE CLASE</p>
+                      <h4>{r.name}</h4>
+                      <p>{r.note}</p>
+                      <details class="slides">
+                        <>
+                          <summary>Ver más diapositivas</summary>
+                          <div class="slide-grid">
+                            {[2, 3].map((i) => (
+                              <a
+                                href={'/vistas/' + r.file + '-' + i + '.png'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <img
+                                  src={'/vistas/' + r.file + '-' + i + '.png'}
+                                  alt={r.name + ', diapositiva ' + i}
+                                  loading="lazy"
+                                />
+                              </a>
+                            ))}
+                          </div>
+                        </>
+                      </details>
+                      <a
+                        class="download"
+                        href={'/archivos/' + r.file + '.pptx'}
+                      >
+                        Presentación completa ↓
+                      </a>
+                    </>
+                  </div>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </details>
+    </section>
+
+    <section class="section" id="normalizacion">
+      <div class="section-header">
+        <span>02 / NORMALIZACIÓN</span><div>
+          <h2>Ordenar para cuidar los datos</h2><p>
+            Un ejercicio de análisis de dependencias y separación de información
+            en tablas.
+          </p>
+        </div>
+      </div>
+      <article class="case">
+        <div class="case-heading">
+          <div>
+            <p class="label">TALLER EN GRUPO · DEPENDENCIAS FUNCIONALES</p><h3>
+              Hospitalización y pedidos
+            </h3>
+          </div><span class="pill">Excel + análisis</span>
+        </div>
+        <div class="case-copy">
+          <p>
+            <strong>La actividad.</strong> En el taller analizamos dos esquemas: hospitalización
+            y pedido–cliente–producto. Identificamos sus claves, dependencias y posibles
+            anomalías, y desarrollamos la normalización paso a paso.
+          </p><p>
+            <strong>Lo que me deja.</strong> Si los datos de un médico o de un cliente
+            se repiten en muchas filas, una actualización puede producir inconsistencias.
+            Separar las tablas según sus dependencias ayuda a reducir ese problema.
+          </p>
+        </div>
+        <div class="comparison">
+          <div>
+            <span>ESQUEMA 01</span><h4>Hospitalización</h4><p>
+              Se identificaron dependencias transitivas asociadas al médico y a
+              la cama. Bajo los supuestos del ejercicio, se separaron
+              hospitalización, médico y cama.
+            </p>
+          </div><div>
+            <span>ESQUEMA 02</span><h4>Pedidos</h4><p>
+              La clave compuesta permitió identificar dependencias parciales y
+              transitivas. El resultado distingue cliente, vendedor, producto,
+              pedido y detalle.
+            </p>
+          </div>
+        </div>
+        <figure class="visual">
+          <a
+            href="/vistas/normalizacion-taller-3.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img
+              src="/vistas/normalizacion-taller-3.png"
+              alt="Resumen comparativo de los esquemas del taller de normalización"
+              loading="lazy"
+            /></a
+          ><figcaption>
+            Resumen comparativo del archivo del grupo · pulsa para ampliar ↗
+          </figcaption>
+        </figure>
+        <details class="inline-details">
+          <summary>Ver el desarrollo paso a paso</summary><div
+            class="sheet-grid"
+          >
+            {
+              [1, 2].map((i) => (
+                <a
+                  href={'/vistas/normalizacion-taller-' + i + '.png'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <>
-                    <h2>{s.title}</h2>
-                    <p>{s.context}</p>
-                    <p class="learning">
-                      <strong>Aprendizaje:</strong> {s.learning}
-                    </p>
+                    <img
+                      src={'/vistas/normalizacion-taller-' + i + '.png'}
+                      alt={'Vista de la hoja del esquema ' + i + ' del taller'}
+                      loading="lazy"
+                    />
+                    <span>Ampliar esquema {i} ↗</span>
+                  </>
+                </a>
+              ))
+            }
+          </div>
+        </details>
+        <div class="links">
+          <a href="/archivos/normalizacion-paso-a-paso.xlsx"
+            >Abrir el taller en Excel ↓</a
+          ><a href="/archivos/preguntas-normalizacion.docx"
+            >Respuestas del grupo ↓</a
+          ><a href="/archivos/resultados-normalizacion.xlsx"
+            >Otros ejercicios de normalización ↓</a
+          ><a href="/blog/normalizacion/">Leer reflexión →</a>
+        </div>
+      </article>
+      <details class="support">
+        <summary
+          >Ver diapositivas de normalización <span>Material de clase +</span
+          ></summary
+        ><div class="slide-grid slide-grid--large">
+          {
+            [1, 2, 3].map((i) => (
+              <a
+                href={'/vistas/normalizacion-' + i + '.png'}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={'/vistas/normalizacion-' + i + '.png'}
+                  alt={'Normalización, diapositiva ' + i}
+                  loading="lazy"
+                />
+              </a>
+            ))
+          }
+        </div><a class="download" href="/archivos/normalizacion.pptx"
+          >Presentación completa ↓</a
+        >
+      </details>
+    </section>
+
+    <section class="section" id="sql">
+      <div class="section-header">
+        <span>03 / SQL</span><div>
+          <h2>Preguntar a los datos</h2><p>
+            Los materiales recorren la consulta de información, desde la
+            selección de filas hasta la combinación de tablas.
+          </p>
+        </div>
+      </div>
+      <article class="case sql-intro">
+        <div class="case-heading">
+          <div>
+            <p class="label">APUNTES Y MATERIAL DE CLASE</p><h3>
+              Una ruta para consultar
+            </h3>
+          </div><span class="pill">SQL</span>
+        </div><div class="case-copy">
+          <p>
+            <strong>El recorrido.</strong> El material presenta SELECT, filtros, ordenamiento,
+            funciones, agrupación y joins. Las vistas siguientes corresponden a diapositivas
+            de clase.
+          </p><p>
+            <strong>Lo que me deja.</strong> Antes de escribir una consulta conviene
+            identificar qué información se necesita, qué condiciones debe cumplir
+            y qué tablas hay que relacionar.
+          </p>
+        </div><div class="links">
+          <a href="/blog/sql/">Leer apuntes de SQL →</a>
+        </div>
+      </article>
+      <div class="resources">
+        {
+          sqlResources.map((r) => (
+            <article class="resource">
+              <>
+                <a
+                  class="resource-image"
+                  href={'/vistas/' + r.file + '-2.png'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={'/vistas/' + r.file + '-2.png'}
+                    alt={'Vista previa de ' + r.name}
+                    loading="lazy"
+                  />
+                </a>
+                <div class="resource-body">
+                  <>
+                    <p class="label">DIAPOSITIVAS DE CLASE</p>
+                    <h3>{r.name}</h3>
+                    <p>{r.note}</p>
+                    <details class="slides">
+                      <>
+                        <summary>Ver vistas previas</summary>
+                        <div class="slide-grid">
+                          {[1, 3].map((i) => (
+                            <a
+                              href={'/vistas/' + r.file + '-' + i + '.png'}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <img
+                                src={'/vistas/' + r.file + '-' + i + '.png'}
+                                alt={r.name + ', diapositiva ' + i}
+                                loading="lazy"
+                              />
+                            </a>
+                          ))}
+                        </div>
+                      </>
+                    </details>
+                    <a class="download" href={'/archivos/' + r.file + '.pptx'}>
+                      Presentación completa ↓
+                    </a>
                   </>
                 </div>
               </>
-            </div>
-            <div class="files">
-              {s.files.map((f) => (
-                <a class="file" href={'/archivos/' + f[1]}>
-                  <span>
-                    <strong>{f[0]}</strong>
-                    <small>{f[2]}</small>
-                  </span>
-                  <b aria-hidden="true">↗</b>
-                </a>
-              ))}
-            </div>
-          </>
-        </section>
-      ))
-    }
-    <p class="hint">
-      Los archivos .drawio se pueden abrir y editar con diagrams.net. Las
-      fotografías del parcial y del quiz corresponden a los enunciados.
-    </p>
-  </main><Footer /></BaseLayout
->
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section" id="proyecto">
+      <div class="section-header">
+        <span>04 / PROYECTO</span><div>
+          <h2>Un caso para integrar conceptos</h2><p>
+            El modelo CineAndes reúne reglas de negocio, entidades débiles y
+            relaciones del curso.
+          </p>
+        </div>
+      </div>
+      <article class="case">
+        <div class="case-heading">
+          <div>
+            <p class="label">MODELO ENTIDAD–RELACIÓN · CINEANDES</p><h3>
+              Una cadena de salas de cine
+            </h3>
+          </div><span class="pill">Diagrama</span>
+        </div>
+        <div class="case-copy">
+          <p>
+            <strong>La actividad.</strong> A partir del caso de CineAndes se representa
+            una cadena con sedes, salas, sillas, funciones, películas, clientes y
+            empleados, entre otros elementos.
+          </p><p>
+            <strong>Lo que me deja.</strong> Las entidades débiles muestran que un
+            número de sala o una silla necesitan el contexto de su propietaria para
+            identificarse. El caso también permite revisar especialización y relaciones
+            recursivas y ternarias.
+          </p>
+        </div>
+        <figure class="visual">
+          <a
+            href="/vistas/modelo-cineandes.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img
+              src="/vistas/modelo-cineandes.png"
+              alt="Diagrama entidad relación completo del caso CineAndes"
+              loading="lazy"
+            /></a
+          ><figcaption>
+            Modelo CineAndes · pulsa la imagen para ampliar y leer el detalle ↗
+          </figcaption>
+        </figure>
+        <div class="links">
+          <a href="/vistas/modelo-cineandes.png">Abrir imagen PNG ↗</a><a
+            href="/archivos/modelo-cineandes.drawio"
+            >Archivo editable .drawio ↓</a
+          >
+        </div>
+      </article>
+      <details class="support">
+        <summary
+          >Consultar los enunciados de las evaluaciones <span
+            >Fotografías +</span
+          ></summary
+        ><p>
+          Estas fotos son los enunciados del parcial y del quiz; se incluyen
+          como referencia del tipo de problemas trabajados.
+        </p><div class="exam-grid">
+          {
+            [
+              'parcial-1',
+              'parcial-2',
+              'parcial-3',
+              'parcial-4',
+              'quiz-1',
+              'quiz-2',
+            ].map((f) => (
+              <a
+                href={'/archivos/' + f + '.png'}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <>
+                  <img
+                    src={'/archivos/' + f + '.png'}
+                    alt={'Enunciado ' + f.replace('-', ' página ')}
+                    loading="lazy"
+                  />
+                  <span>{f.replace('-', ' · página ')} ↗</span>
+                </>
+              </a>
+            ))
+          }
+        </div>
+      </details>
+    </section>
+    <div class="endnote">
+      <p class="kicker">SEGUIR EXPLORANDO</p><h2>
+        Los conceptos detrás de las evidencias.
+      </h2><a href="/blog/">Ir a los apuntes del blog →</a>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
 <style>
-  .wrap {
-    width: min(1100px, calc(100% - 2.5rem));
+  .portfolio {
+    width: min(1180px, calc(100% - 2.5rem));
     margin: auto;
   }
   .intro {
-    padding: 6rem 0 4rem;
-    max-width: 850px;
+    padding: clamp(5rem, 10vw, 9rem) 0 5rem;
+    max-width: 1050px;
   }
-  .eyebrow,
-  .number {
+  .kicker,
+  .label,
+  .section-header > span {
     color: var(--color-accent);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    font-size: 0.8rem;
+    letter-spacing: 0.13em;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
   }
   .intro h1 {
-    font-size: clamp(4rem, 8vw, 6.5rem);
-    letter-spacing: -0.06em;
-    line-height: 1;
-    margin: 1.5rem 0;
+    font-size: clamp(3.4rem, 7.7vw, 7rem);
+    letter-spacing: -0.065em;
+    line-height: 0.98;
+    margin: 1.6rem 0;
+    max-width: 1000px;
   }
-  .intro > p:not(.eyebrow) {
-    font-size: 1.2rem;
+  .intro h1 em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+  .intro-copy {
+    max-width: 680px;
     color: var(--color-text-muted);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
     line-height: 1.7;
-    max-width: 720px;
   }
   .shortcuts {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.7rem;
-    margin-top: 2rem;
+    gap: 0.65rem;
+    margin-top: 2.5rem;
   }
-  .shortcuts a {
-    padding: 0.6rem 1rem;
+  .shortcuts a,
+  .pill {
     border: 1px solid var(--glass-border);
     border-radius: 100px;
+    padding: 0.65rem 1rem;
+    font-size: 0.8rem;
     text-decoration: none;
+    font-weight: 700;
   }
-  .category {
+  .section {
     scroll-margin-top: 6rem;
-    padding: 4rem 0;
     border-top: 1px solid var(--glass-border);
+    padding: 5rem 0;
   }
-  .section-heading {
+  .section-header {
     display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    grid-template-columns: 210px 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
   }
-  .section-heading h2 {
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    letter-spacing: -0.04em;
+  .section-header h2,
+  .endnote h2 {
+    font-size: clamp(2.4rem, 5vw, 4.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.055em;
     margin: 0 0 1rem;
   }
-  .section-heading p {
-    max-width: 740px;
+  .section-header p {
+    color: var(--color-text-muted);
+    max-width: 640px;
+    font-size: 1.1rem;
+  }
+  .case {
+    border: 1px solid var(--glass-border);
+    border-radius: 1.6rem;
+    padding: clamp(1.3rem, 3.5vw, 3rem);
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
+    margin: 0 0 1.25rem;
+  }
+  .case-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: start;
+  }
+  .case-heading h3 {
+    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin: 0.7rem 0 1rem;
+  }
+  .pill {
+    white-space: nowrap;
+    color: var(--color-text-muted);
+  }
+  .case-copy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1rem 0 2rem;
+  }
+  .case-copy p,
+  .resource-body > p:not(.label),
+  .comparison p,
+  .support > p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .case-copy strong,
+  .note strong {
+    color: var(--color-text);
+  }
+  .visual {
+    margin: 0;
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #fff;
+  }
+  .visual a {
+    display: block;
+  }
+  .visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 680px;
+    object-fit: contain;
+  }
+  .visual--dark {
+    background: #080808;
+  }
+  .visual figcaption {
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+    color: #51525a;
+    background: #f5f5f5;
+  }
+  .note {
+    margin-top: 1.3rem;
+    padding: 1rem 1.2rem;
+    border-left: 3px solid var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
     color: var(--color-text-muted);
     line-height: 1.65;
   }
-  .section-heading .learning {
-    color: var(--color-text);
-  }
-  .files {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-  }
-  .file {
+  .links {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.15rem 1.3rem;
-    border: 1px solid var(--glass-border);
-    border-radius: 1rem;
-    background: var(--glass-background, rgba(128, 128, 128, 0.06));
+    flex-wrap: wrap;
+    gap: 0.8rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .links a,
+  .download,
+  .endnote a {
+    color: var(--color-accent);
+    font-weight: 700;
     text-decoration: none;
   }
-  .file:hover {
-    border-color: var(--color-accent);
+  .links a:hover,
+  .download:hover {
+    text-decoration: underline;
   }
-  .file strong,
-  .file small {
+  .diagram-strip,
+  .comparison {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    align-items: center;
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+  .diagram-strip small,
+  .diagram-strip strong,
+  .diagram-strip span {
     display: block;
   }
-  .file small {
-    color: var(--color-text-muted);
-    margin-top: 0.25rem;
+  .diagram-strip small,
+  .comparison span {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    font-weight: 800;
   }
-  .file b {
+  .diagram-strip strong {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+  .diagram-strip span {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+  .diagram-strip > b {
+    font-size: 1.5rem;
     color: var(--color-accent);
   }
-  .hint {
-    color: var(--color-text-muted);
-    padding-bottom: 5rem;
+  .comparison {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    margin-bottom: 1.5rem;
   }
-  @media (max-width: 700px) {
+  .comparison > div {
+    padding: 0.5rem;
+  }
+  .comparison h4 {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+  }
+  .support,
+  .inline-details {
+    border: 1px solid var(--glass-border);
+    border-radius: 1.1rem;
+    padding: 1.4rem;
+    margin-top: 1.25rem;
+  }
+  .support > summary,
+  .inline-details > summary {
+    cursor: pointer;
+    font-weight: 750;
+    font-size: 1.05rem;
+  }
+  .support > summary span {
+    float: right;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+  }
+  .support > p {
+    margin: 1rem 0;
+  }
+  .resources {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .resource {
+    border: 1px solid var(--glass-border);
+    border-radius: 1.1rem;
+    overflow: hidden;
+    background: var(--glass-background, rgba(128, 128, 128, 0.055));
+  }
+  .resource-image {
+    display: block;
+    aspect-ratio: 16/9;
+    background: #eee;
+    overflow: hidden;
+  }
+  .resource-image img,
+  .slide-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .resource-body {
+    padding: 1.2rem;
+  }
+  .resource-body h3,
+  .resource-body h4 {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin: 0.6rem 0;
+  }
+  .resource-body > p:not(.label) {
+    font-size: 0.9rem;
+    min-height: 3em;
+  }
+  .slides {
+    margin: 1rem 0;
+  }
+  .slides summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .slide-grid,
+  .sheet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    margin: 1rem 0;
+  }
+  .slide-grid a,
+  .sheet-grid a {
+    border: 1px solid var(--glass-border);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    display: block;
+    background: #fff;
+  }
+  .slide-grid--large {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sheet-grid img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .sheet-grid span {
+    display: block;
+    padding: 0.6rem;
+    color: #34343c;
+    font-size: 0.8rem;
+  }
+  .download {
+    font-size: 0.85rem;
+  }
+  .exam-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+  .exam-grid a {
+    border: 1px solid var(--glass-border);
+    border-radius: 0.8rem;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .exam-grid img {
+    display: block;
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    object-position: top;
+  }
+  .exam-grid span {
+    display: block;
+    padding: 0.8rem;
+    text-transform: capitalize;
+    font-size: 0.85rem;
+  }
+  .endnote {
+    padding: 3rem 0 7rem;
+    max-width: 700px;
+  }
+  .endnote a {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+  @media (max-width: 850px) {
+    .resources {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .section-header {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    .case-copy {
+      gap: 1rem;
+    }
+    .diagram-strip {
+      grid-template-columns: 1fr;
+    }
+    .diagram-strip > b {
+      transform: rotate(90deg);
+      justify-self: start;
+    }
+    .exam-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
     .intro {
       padding-top: 4rem;
     }
-    .section-heading {
+    .case-copy,
+    .comparison,
+    .resources,
+    .sheet-grid {
       grid-template-columns: 1fr;
     }
-    .files {
+    .case-heading {
+      flex-direction: column;
+    }
+    .pill {
+      order: -1;
+    }
+    .support > summary span {
+      float: none;
+      display: block;
+      margin-top: 0.4rem;
+    }
+    .slide-grid--large {
       grid-template-columns: 1fr;
+    }
+    .exam-grid img {
+      height: 150px;
+    }
+    .section {
+      padding: 3.5rem 0;
     }
   }
 </style>
